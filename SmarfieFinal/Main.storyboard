@@ -217,7 +217,7 @@
                                     <color key="titleColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="PuG-Ha-ReZ" kind="show" id="kLG-zj-tST"/>
+                                    <action selector="showPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qrg-Nq-3PN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cue-GZ-EN9">
@@ -285,9 +285,6 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsO-Oq-WMS">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="96"/>
-                                        <connections>
-                                            <action selector="showPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vIl-ab-doz"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -547,7 +544,4 @@
         <image name="delete" width="34" height="34"/>
         <image name="export" width="34" height="34"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="azd-mC-cq8"/>
-    </inferredMetricsTieBreakers>
 </document>

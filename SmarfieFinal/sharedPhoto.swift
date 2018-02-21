@@ -9,10 +9,18 @@
 import Foundation
 import UIKit
 
+struct PhotoScore{
+    let image: UIImage
+    var score: Double?
+    let gravity: Double
+}
+
+
+
 class PhotoShared {
     static let shared = PhotoShared()
     
-    var myPhotoArray: [UIImage]?
+    var myPhotoArray: [PhotoScore]?
 }
 
 

@@ -35,6 +35,19 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         myPhotoCollectionView.dataSource = self
         navigationController?.delegate = self
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView(_:)), name: Notification.Name("finishCalculateScore"), object: nil)
+    }
+    
+    @objc func reloadCollectionView(_ sender:Notification) {
+        print("finish reload")
+        PhotoShared.shared.myPhotoArray?.sort(by: { (lhs:PhotoScore, rhs:PhotoScore) -> Bool in
+            return lhs.score! > rhs.score!
+            })
+        DispatchQueue.main.async {
+             self.myPhotoCollectionView.reloadData()
+        }
+       
     }
     
     
@@ -49,7 +62,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         var photoToShare: UIImage?
         let center = view.convert(self.myPhotoCollectionView.center, to: self.myPhotoCollectionView)
         if let index = myPhotoCollectionView!.indexPathForItem(at:center) {
-            photoToShare = PhotoShared.shared.myPhotoArray![index.row]
+            photoToShare = PhotoShared.shared.myPhotoArray![index.row].image
         }
             
         let activityController = UIActivityViewController(activityItems: [photoToShare as Any], applicationActivities: nil)
@@ -73,7 +86,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     
     func deleteButtonTapped(sender: UIAlertAction) -> Void {
-        PhotoShared.shared.myPhotoArray!.removeAll()
+        PhotoShared.shared.myPhotoArray = nil
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -97,7 +110,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
         let photoCell = cell.viewWithTag(1) as! UIImageView
-        photoCell.image = PhotoShared.shared.myPhotoArray![indexPath.row]
+        photoCell.image = PhotoShared.shared.myPhotoArray![indexPath.row].image
         cell.backgroundColor = .white
         
         return cell
@@ -110,7 +123,8 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let center = view.convert(self.myPhotoCollectionView.center, to: self.myPhotoCollectionView)
         if let index = myPhotoCollectionView!.indexPathForItem(at:center) {
             print(index)
-            photo.image = PhotoShared.shared.myPhotoArray![index.row]
+            print(PhotoShared.shared.myPhotoArray![index.row].score!)
+            photo.image = PhotoShared.shared.myPhotoArray![index.row].image
         }
         print("index not found")
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-
+import CoreMotion
 class ViewController: UIViewController {
     
     var currentCameraPosition: CameraPosition?
@@ -27,6 +27,9 @@ class ViewController: UIViewController {
     var image: UIImage?
     var rectangularFrame:CGRect?
     var squaredFrame:CGRect?
+    let motionManager = CMMotionManager()
+    let classifier = PhotoClassifier()
+    let queue = DispatchQueue(label: "com.smarfie.CoreImageQueue", qos: .userInitiated)
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -58,7 +61,7 @@ class ViewController: UIViewController {
         setupInputOutput()
         setupPreviewLayer()
         startRunningCaptureSession()
-        
+        motionManager.startDeviceMotionUpdates(using: .xMagneticNorthZVertical)
         takePhotoButton.layer.borderWidth = 6
         takePhotoButton.layer.borderColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0).cgColor
         takePhotoButton.layer.cornerRadius = 37.5
@@ -257,6 +260,7 @@ class ViewController: UIViewController {
         photoSettings.flashMode = self.flashMode
         let uniCameraSetting = AVCapturePhotoSettings.init(from: photoSettings)
         photoOutput?.capturePhoto(with: uniCameraSetting, delegate: self)
+        MotionManager.shared.gravità = motionManager.deviceMotion?.gravity.z
         
     }
     
@@ -284,8 +288,18 @@ class ViewController: UIViewController {
     
     
     @IBAction func showPhoto(_ sender: UIButton) {
+        
+        
         if let _ = PhotoShared.shared.myPhotoArray {
             performSegue(withIdentifier: "mySegue", sender: self)
+            queue.async {
+                for index in 0..<PhotoShared.shared.myPhotoArray!.count{
+                   PhotoShared.shared.myPhotoArray![index].score = self.classifier.calculateScore(image: PhotoShared.shared.myPhotoArray![index])
+                    
+                }
+                NotificationCenter.default.post(name: NSNotification.Name("finishCalculateScore"), object: nil)
+            }
+            
         } else {
             let alertController = UIAlertController(title: "No Photos", message: "Take at least one selfie", preferredStyle: .alert)
             
@@ -319,15 +333,16 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
         if let imageData = photo.fileDataRepresentation() {
             print(imageData)
             image = UIImage(data: imageData)
+            let myPhoto = PhotoScore(image: image!, score: 0, gravity: MotionManager.shared.gravità!)
             if let _ = PhotoShared.shared.myPhotoArray {
-                PhotoShared.shared.myPhotoArray!.append(image!)
+                PhotoShared.shared.myPhotoArray!.append(myPhoto)
             } else {
-                PhotoShared.shared.myPhotoArray = [image!]
+                PhotoShared.shared.myPhotoArray = [myPhoto]
             }
             
 //            print(PhotoShared.shared.myPhotoArray.count)
             UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
-            photoLittle.image = PhotoShared.shared.myPhotoArray!.last
+            photoLittle.image = PhotoShared.shared.myPhotoArray!.last!.image
             photoCounter.text = "\(PhotoShared.shared.myPhotoArray!.count)"
         }
     }

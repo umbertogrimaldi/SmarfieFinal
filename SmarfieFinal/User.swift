@@ -10,5 +10,5 @@ import Foundation
 
 class User {
     static let shared = User()
-    var bestSide:FaceSide?
+    var bestSide:FaceSide = .right
 }
