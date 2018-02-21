@@ -12,7 +12,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     
     var myPhoto: UIImage?
     var sourceController: UIViewController?
-    var imageArray: [UIImage] = [#imageLiteral(resourceName: "Front Camera Icon"), #imageLiteral(resourceName: "flash"), #imageLiteral(resourceName: "close"),#imageLiteral(resourceName: "delete"), #imageLiteral(resourceName: "export"), #imageLiteral(resourceName: "export"), #imageLiteral(resourceName: "delete"), #imageLiteral(resourceName: "Video Camera Icon"), #imageLiteral(resourceName: "camera"), #imageLiteral(resourceName: "delete"), #imageLiteral(resourceName: "flash"), #imageLiteral(resourceName: "flash"), #imageLiteral(resourceName: "camera"), #imageLiteral(resourceName: "Video Camera Icon"), #imageLiteral(resourceName: "close"), #imageLiteral(resourceName: "close"), #imageLiteral(resourceName: "close")]
+    var imageArray: [UIImage] = [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image6"), #imageLiteral(resourceName: "image7"), #imageLiteral(resourceName: "image8"), #imageLiteral(resourceName: "image9"), #imageLiteral(resourceName: "image10"), #imageLiteral(resourceName: "image11"), #imageLiteral(resourceName: "image12"), #imageLiteral(resourceName: "image13"), #imageLiteral(resourceName: "image14"), #imageLiteral(resourceName: "image15"), #imageLiteral(resourceName: "image16")]
 
     @IBOutlet private weak var selfiesCollection: UICollectionView!
     
@@ -34,15 +34,9 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
         layout.minimumLineSpacing = 2.5
     }
     
+
     
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
-    
-    //    MARK:- COLLECTION VIEW SETUP
+    //    MARK:- BOTTOM COLLECTION VIEW SETUP
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
@@ -51,6 +45,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
         cell.layer.borderWidth = 0.1
+        cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.cornerRadius = 5
         
         let cellImage = cell.viewWithTag(2) as! UIImageView
