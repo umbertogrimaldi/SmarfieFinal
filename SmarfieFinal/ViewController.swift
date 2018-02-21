@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     //    MARK:- Outlets
     
     @IBOutlet weak var photoCounter: UILabel!
-    @IBOutlet weak var photoLittle: UIImageView!
     @IBOutlet weak var squareButton: UIButton!
     @IBOutlet weak var rectButton: UIButton!
     @IBOutlet weak var counterView: UIView!
@@ -65,6 +64,7 @@ class ViewController: UIViewController {
         
         counterView.layer.cornerRadius = 5
         counterView.layer.opacity = 30
+        counterView.layer.borderWidth = 1
         counterView.layer.borderColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0).cgColor
         
     }
@@ -72,7 +72,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         navigationController?.navigationBar.isHidden = true
-        photoLittle.image = nil
         photoCounter.text = "\(0)"
     }
     
@@ -327,7 +326,6 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
             
 //            print(PhotoShared.shared.myPhotoArray.count)
             UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
-            photoLittle.image = PhotoShared.shared.myPhotoArray!.last
             photoCounter.text = "\(PhotoShared.shared.myPhotoArray!.count)"
         }
     }
