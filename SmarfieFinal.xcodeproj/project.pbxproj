@@ -8,20 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3A0203DBCB70009FD5B /* AppDelegate.swift */; };
-		8348C3A3203DBCB70009FD5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3A2203DBCB70009FD5B /* ViewController.swift */; };
-		8348C3A6203DBCB70009FD5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A4203DBCB70009FD5B /* Main.storyboard */; };
 		8348C3A8203DBCB70009FD5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A7203DBCB70009FD5B /* Assets.xcassets */; };
 		8348C3AB203DBCB70009FD5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */; };
+		8348C3B3203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3B2203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift */; };
+		8348C3B5203DBD420009FD5B /* MySelfiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3B4203DBD420009FD5B /* MySelfiesViewController.swift */; };
+		8348C3B7203DBD490009FD5B /* PhotoClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3B6203DBD490009FD5B /* PhotoClassifier.swift */; };
+		8348C3BB203DBD610009FD5B /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3B9203DBD610009FD5B /* PreviewViewController.swift */; };
+		8348C3BC203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3BA203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift */; };
+		8348C3BE203DBD6B0009FD5B /* sharedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3BD203DBD6B0009FD5B /* sharedPhoto.swift */; };
+		8348C3C2203DBD720009FD5B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3C0203DBD720009FD5B /* TableViewCell.swift */; };
+		8348C3C3203DBD720009FD5B /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3C1203DBD720009FD5B /* FirstTableViewCell.swift */; };
+		8348C3C5203DBD7C0009FD5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3C4203DBD7C0009FD5B /* User.swift */; };
+		8348C3C7203DBD990009FD5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3C6203DBD980009FD5B /* ViewController.swift */; };
+		8348C3C9203DBDA50009FD5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3C8203DBDA50009FD5B /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8348C39D203DBCB70009FD5B /* SmarfieFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmarfieFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8348C3A0203DBCB70009FD5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8348C3A2203DBCB70009FD5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8348C3A5203DBCB70009FD5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8348C3A7203DBCB70009FD5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8348C3AA203DBCB70009FD5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8348C3AC203DBCB70009FD5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8348C3B2203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySelfiesDetailsViewController.swift; sourceTree = "<group>"; };
+		8348C3B4203DBD420009FD5B /* MySelfiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySelfiesViewController.swift; sourceTree = "<group>"; };
+		8348C3B6203DBD490009FD5B /* PhotoClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoClassifier.swift; sourceTree = "<group>"; };
+		8348C3B9203DBD610009FD5B /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		8348C3BA203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredItemCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		8348C3BD203DBD6B0009FD5B /* sharedPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sharedPhoto.swift; sourceTree = "<group>"; };
+		8348C3C0203DBD720009FD5B /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		8348C3C1203DBD720009FD5B /* FirstTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTableViewCell.swift; sourceTree = "<group>"; };
+		8348C3C4203DBD7C0009FD5B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8348C3C6203DBD980009FD5B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8348C3C8203DBDA50009FD5B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +73,38 @@
 			isa = PBXGroup;
 			children = (
 				8348C3A0203DBCB70009FD5B /* AppDelegate.swift */,
-				8348C3A2203DBCB70009FD5B /* ViewController.swift */,
-				8348C3A4203DBCB70009FD5B /* Main.storyboard */,
+				8348C3C6203DBD980009FD5B /* ViewController.swift */,
+				8348C3B2203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift */,
+				8348C3B4203DBD420009FD5B /* MySelfiesViewController.swift */,
+				8348C3B8203DBD610009FD5B /* PreviewController */,
+				8348C3B6203DBD490009FD5B /* PhotoClassifier.swift */,
+				8348C3BD203DBD6B0009FD5B /* sharedPhoto.swift */,
+				8348C3C4203DBD7C0009FD5B /* User.swift */,
+				8348C3C8203DBDA50009FD5B /* Main.storyboard */,
+				8348C3BF203DBD720009FD5B /* TableViewCells */,
 				8348C3A7203DBCB70009FD5B /* Assets.xcassets */,
 				8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */,
 				8348C3AC203DBCB70009FD5B /* Info.plist */,
 			);
 			path = SmarfieFinal;
+			sourceTree = "<group>";
+		};
+		8348C3B8203DBD610009FD5B /* PreviewController */ = {
+			isa = PBXGroup;
+			children = (
+				8348C3B9203DBD610009FD5B /* PreviewViewController.swift */,
+				8348C3BA203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift */,
+			);
+			path = PreviewController;
+			sourceTree = "<group>";
+		};
+		8348C3BF203DBD720009FD5B /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				8348C3C0203DBD720009FD5B /* TableViewCell.swift */,
+				8348C3C1203DBD720009FD5B /* FirstTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,9 +166,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8348C3C9203DBDA50009FD5B /* Main.storyboard in Resources */,
 				8348C3AB203DBCB70009FD5B /* LaunchScreen.storyboard in Resources */,
 				8348C3A8203DBCB70009FD5B /* Assets.xcassets in Resources */,
-				8348C3A6203DBCB70009FD5B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,22 +179,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8348C3A3203DBCB70009FD5B /* ViewController.swift in Sources */,
+				8348C3C3203DBD720009FD5B /* FirstTableViewCell.swift in Sources */,
+				8348C3B5203DBD420009FD5B /* MySelfiesViewController.swift in Sources */,
+				8348C3C2203DBD720009FD5B /* TableViewCell.swift in Sources */,
+				8348C3BC203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift in Sources */,
+				8348C3C7203DBD990009FD5B /* ViewController.swift in Sources */,
+				8348C3BE203DBD6B0009FD5B /* sharedPhoto.swift in Sources */,
 				8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */,
+				8348C3B3203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift in Sources */,
+				8348C3BB203DBD610009FD5B /* PreviewViewController.swift in Sources */,
+				8348C3C5203DBD7C0009FD5B /* User.swift in Sources */,
+				8348C3B7203DBD490009FD5B /* PhotoClassifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8348C3A4203DBCB70009FD5B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8348C3A5203DBCB70009FD5B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -275,6 +319,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M4CAU87962;
 				INFOPLIST_FILE = SmarfieFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.SmarfieFinal;
@@ -289,6 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M4CAU87962;
 				INFOPLIST_FILE = SmarfieFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.SmarfieFinal;
