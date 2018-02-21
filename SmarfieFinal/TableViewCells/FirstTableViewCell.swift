@@ -10,12 +10,12 @@ import UIKit
 
 class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var imageArray: [UIImage] = [#imageLiteral(resourceName: "Front Camera Icon"), #imageLiteral(resourceName: "flash"), #imageLiteral(resourceName: "close"),#imageLiteral(resourceName: "delete"), #imageLiteral(resourceName: "export"), #imageLiteral(resourceName: "export"), #imageLiteral(resourceName: "delete"), #imageLiteral(resourceName: "Video Camera Icon"), #imageLiteral(resourceName: "camera")]
-    
+    var imageArray: [UIImage] = [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image6"), #imageLiteral(resourceName: "image7"), #imageLiteral(resourceName: "image8")]
     @IBOutlet weak var selfiesCollection: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
 //     MARK: - COLLECTIONVIEW DELEGATE AND DATASOURCE
         selfiesCollection.delegate = self
         selfiesCollection.dataSource = self
@@ -32,15 +32,8 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         selfiesCollection.backgroundColor = UIColor.white
     }
     
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-
-//    MARK:- COLLECTION VIEW SETUP
     
+//    MARK:- COLLECTION VIEW SETUP
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
     }
@@ -50,12 +43,9 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
        
         let cellImage = cell.viewWithTag(1) as! UIImageView
         cellImage.image = imageArray[indexPath.row]
-//        cell.layer.cornerRadius = 5
-        cell.layer.masksToBounds = true
-      
-        cell.layer.shadowColor = UIColor.blue.cgColor
-        cell.layer.shadowOffset = CGSize(width: 3, height: 3)
-        cell.layer.shadowOpacity = 0.5
+        cell.layer.cornerRadius = 5
+        cell.layer.borderWidth = 0.1
+        cell.layer.borderColor = UIColor.gray.cgColor
        
         return cell
     }

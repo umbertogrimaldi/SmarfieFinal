@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var flashButton: UIButton! {
         didSet{
-            flashButton.setImage(#imageLiteral(resourceName: "Flash Off Icon"), for: .normal)
+            flashButton.setImage(#imageLiteral(resourceName: "FlashAuto"), for: .normal)
         }
     }
     @IBOutlet weak var switchCameraButton: UIButton!
@@ -132,7 +132,7 @@ class ViewController: UIViewController {
             if captureSession.canAddInput(self.backCameraInput!) { captureSession.addInput(self.backCameraInput!) }else {print ("Cannot add back input")}
             
             self.currentCameraPosition = .rear
-            self.switchCameraButton.setImage(#imageLiteral(resourceName: "Rear Camera Icon"), for: .normal)
+            self.switchCameraButton.setImage(#imageLiteral(resourceName: "changecamera"), for: .normal)
             
         } else if let frontCamera = self.frontCamera {
             self.frontCameraInput = try? AVCaptureDeviceInput(device: frontCamera)
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
             else { print ("cannot add front input")}
             
             self.currentCameraPosition = .front
-            self.switchCameraButton.setImage(#imageLiteral(resourceName: "Front Camera Icon"), for: .normal)
+            self.switchCameraButton.setImage(#imageLiteral(resourceName: "changecamera"), for: .normal)
         }
         
         photoOutput = AVCapturePhotoOutput()
@@ -180,9 +180,9 @@ class ViewController: UIViewController {
         try? self.switchCameras()
         switch self.currentCameraPosition{
         case .some(.front):
-            switchCameraButton.setImage(#imageLiteral(resourceName: "Front Camera Icon"), for: .normal)
+            switchCameraButton.setImage(#imageLiteral(resourceName: "changecamera"), for: .normal)
         case .some(.rear):
-            switchCameraButton.setImage(#imageLiteral(resourceName: "Rear Camera Icon"), for: .normal)
+            switchCameraButton.setImage(#imageLiteral(resourceName: "changecamera"), for: .normal)
         case .none:
             return
         }
@@ -264,15 +264,15 @@ class ViewController: UIViewController {
         switch self.flashMode{
         case .on:
             self.flashMode = .off
-            self.flashButton.setImage(#imageLiteral(resourceName: "Flash Off Icon"), for: .normal)
+            self.flashButton.setImage(#imageLiteral(resourceName: "FlashOff"), for: .normal)
         case .off :
             self.flashMode = .auto
             self.flashButton.setImage(nil, for: .normal)
-            self.flashButton.setTitle("Auto", for: .normal)
+            self.flashButton.setImage(#imageLiteral(resourceName: "FlashAuto"), for: .normal)
         case .auto:
             self.flashMode = .on
             self.flashButton.setTitle(nil, for: .normal)
-            self.flashButton.setImage(#imageLiteral(resourceName: "Flash On Icon"), for: .normal)
+            self.flashButton.setImage(#imageLiteral(resourceName: "FlashOn"), for: .normal)
         }
     }
     

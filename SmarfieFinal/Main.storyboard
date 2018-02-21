@@ -50,7 +50,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="230" height="220"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8B8-sn-BnT">
+                                                                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8B8-sn-BnT">
                                                                         <rect key="frame" x="0.0" y="0.0" width="230" height="220"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="8B8-sn-BnT" secondAttribute="height" multiplier="23:22" id="KLP-FB-iNA"/>
@@ -103,7 +103,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mTE-an-hIY">
+                                                                    <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mTE-an-hIY">
                                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="mTE-an-hIY" secondAttribute="height" multiplier="1:1" id="fkr-Ba-lYW"/>
@@ -207,11 +207,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59E-OA-ak6">
-                                <rect key="frame" x="301" y="75" width="52" height="33"/>
+                                <rect key="frame" x="297" y="75" width="56" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="59E-OA-ak6" secondAttribute="height" multiplier="53:40" constant="8" id="qF9-2q-6Ct"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFMono-Medium" family="SF Mono" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="SFMono-Medium" family="SF Mono" pointSize="20"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -237,7 +237,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Ygs-Xk-vk2"/>
                                 </constraints>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="changeCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kNz-yW-3YT"/>
                                 </connections>
@@ -259,12 +259,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qg-dX-TEa">
-                                <rect key="frame" x="172" y="67" width="30" height="35"/>
+                                <rect key="frame" x="172" y="77" width="23" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="X9y-TH-XkT"/>
-                                    <constraint firstAttribute="height" constant="35" id="jHS-0r-lDU"/>
+                                    <constraint firstAttribute="width" constant="23" id="X9y-TH-XkT"/>
+                                    <constraint firstAttribute="height" constant="26" id="jHS-0r-lDU"/>
                                 </constraints>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="flashButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ynj-0a-Dwx"/>
                                 </connections>
@@ -311,7 +311,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="0MR-QZ-H2f" secondAttribute="bottom" constant="23" id="Ewn-pT-AX2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PAu-sk-XCo" secondAttribute="trailing" constant="46" id="GIZ-Eo-OJ9"/>
-                            <constraint firstItem="7qg-dX-TEa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="3" id="HNv-Bt-tCr"/>
+                            <constraint firstItem="7qg-dX-TEa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="HNv-Bt-tCr"/>
                             <constraint firstAttribute="bottom" secondItem="njh-qm-SWW" secondAttribute="bottom" constant="15" id="Hth-HI-fx6"/>
                             <constraint firstItem="njh-qm-SWW" firstAttribute="leading" secondItem="0MR-QZ-H2f" secondAttribute="trailing" constant="59" id="MFH-b9-efH"/>
                             <constraint firstItem="61r-Ft-tvn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NKd-wr-9A2"/>
@@ -355,7 +355,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aAL-Me-dHQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="96N-Tl-J9Y"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="96N-Tl-J9Y"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="weZ-yY-mGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -457,6 +457,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="selectedImageTintColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="Apq-6s-TGu" kind="relationship" relationship="viewControllers" id="yAm-nI-d9H"/>
@@ -472,7 +473,7 @@
         <scene sceneID="qof-ta-q6j">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qfG-r7-zUL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Camera" id="jbj-eg-H65"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera" id="jbj-eg-H65"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h5O-mM-KEh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -491,7 +492,9 @@
         <scene sceneID="eny-AH-FyS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Apq-6s-TGu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Selfies" id="Lae-Fj-DQq"/>
+                    <tabBarItem key="tabBarItem" title="My Selfies" image="mySelfies" id="Lae-Fj-DQq">
+                        <color key="badgeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PwT-ab-OOP">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -508,10 +511,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera" width="33" height="26"/>
         <image name="chevronArrowDown" width="29" height="21"/>
         <image name="close" width="20" height="20"/>
         <image name="delete" width="34" height="34"/>
         <image name="export" width="34" height="34"/>
+        <image name="mySelfies" width="28" height="28"/>
+        <image name="settings" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="azd-mC-cq8"/>
