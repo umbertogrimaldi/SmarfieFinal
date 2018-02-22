@@ -30,7 +30,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(PhotoShared.shared.myPhotoArray!.count)
+        print(PhotoShared.shared.myPhotoSession!.count)
         myPhotoCollectionView.delegate = self
         myPhotoCollectionView.dataSource = self
         navigationController?.delegate = self
@@ -39,11 +39,20 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView(_:)), name: Notification.Name("finishCalculateScore"), object: nil)
     }
     
+    
     @objc func reloadCollectionView(_ sender:Notification) {
         print("finish reload")
-        PhotoShared.shared.myPhotoArray?.sort(by: { (lhs:PhotoScore, rhs:PhotoScore) -> Bool in
+        PhotoShared.shared.myPhotoSession!.sort(by: { (lhs:PhotoScore, rhs:PhotoScore) -> Bool in
             return lhs.score! > rhs.score!
             })
+        if let _ = PhotoShared.shared.setOfBest {
+            PhotoShared.shared.setOfBest!.insert(PhotoShared.shared.myPhotoSession!.first!)
+
+        }else{
+            PhotoShared.shared.setOfBest = [PhotoShared.shared.myPhotoSession!.first!]
+
+        }
+        
         DispatchQueue.main.async {
              self.myPhotoCollectionView.reloadData()
         }
@@ -56,13 +65,35 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         tabBarController?.tabBar.isHidden = true
         navigationController?.navigationBar.isHidden = true
     }
+    
+    
+    @IBAction func saveToFavourites(_ sender: Any) {
+        var photoToSave: PhotoScore?
+        let center = view.convert(self.myPhotoCollectionView.center, to: self.myPhotoCollectionView)
+        if let index = myPhotoCollectionView!.indexPathForItem(at:center) {
+            photoToSave = PhotoShared.shared.myPhotoSession![index.row]
+        }
+        
+        if let _ = PhotoShared.shared.setOfFavourites{
+               PhotoShared.shared.setOfFavourites!.insert(photoToSave!)
+        }else{
+               PhotoShared.shared.setOfFavourites = [photoToSave!]
+        }
+         let alert = UIAlertController(title: "OK!", message: "Your photo has been saved as a favourite", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Cool!", style: .default) { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 
 
     @IBAction func shareTapped(_ sender: Any) {
         var photoToShare: UIImage?
         let center = view.convert(self.myPhotoCollectionView.center, to: self.myPhotoCollectionView)
         if let index = myPhotoCollectionView!.indexPathForItem(at:center) {
-            photoToShare = PhotoShared.shared.myPhotoArray![index.row].image
+            photoToShare = PhotoShared.shared.myPhotoSession![index.row].image
         }
             
         let activityController = UIActivityViewController(activityItems: [photoToShare as Any], applicationActivities: nil)
@@ -74,9 +105,15 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let alertController = UIAlertController(title: "Delete", message: "Do you want to delete the collection?", preferredStyle: .actionSheet)
         
-        let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: deleteButtonTapped)
+        let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            PhotoShared.shared.myPhotoSession = nil
+            self.navigationController?.popToRootViewController(animated: true)
+        }
         
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelButtonTapped)
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
         
         alertController.addAction(deleteButton)
         alertController.addAction(cancelButton)
@@ -85,14 +122,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     
-    func deleteButtonTapped(sender: UIAlertAction) -> Void {
-        PhotoShared.shared.myPhotoArray = nil
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    func cancelButtonTapped(sender: UIAlertAction) -> Void {
-        dismiss(animated: true, completion: nil)
-    }
+  
     
     
     @IBAction func saveButton(_ sender: Any) {
@@ -103,14 +133,14 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     //    MARK:- Collection View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PhotoShared.shared.myPhotoArray!.count
+        return PhotoShared.shared.myPhotoSession!.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
         let photoCell = cell.viewWithTag(1) as! UIImageView
-        photoCell.image = PhotoShared.shared.myPhotoArray![indexPath.row].image
+        photoCell.image = PhotoShared.shared.myPhotoSession![indexPath.row].image
         cell.backgroundColor = .white
         
         return cell
@@ -122,41 +152,44 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     private func findCenterIndex() {
         let center = view.convert(self.myPhotoCollectionView.center, to: self.myPhotoCollectionView)
         if let index = myPhotoCollectionView!.indexPathForItem(at:center) {
-            print(index)
-            print(PhotoShared.shared.myPhotoArray![index.row].score!)
-            photo.image = PhotoShared.shared.myPhotoArray![index.row].image
+//            print(index)
+            if let score = PhotoShared.shared.myPhotoSession![index.row].score{
+            }
+            photo.image = PhotoShared.shared.myPhotoSession![index.row].image
         }
-        print("index not found")
+        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         findCenterIndex()
+        
+
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        findCenterIndex()
-    }
-    
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        findCenterIndex()
-    }
-    
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        findCenterIndex()
-    }
-    
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        findCenterIndex()
-    }
-    
-    
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        findCenterIndex()
-    }
-    
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        findCenterIndex()
+//    }
+//
+//
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        findCenterIndex()
+//    }
+//
+//
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        findCenterIndex()
+//    }
+//
+//
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        findCenterIndex()
+//    }
+//
+//
+//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+//        findCenterIndex()
+//    }
+//
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

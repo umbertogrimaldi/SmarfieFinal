@@ -60,11 +60,11 @@ class ViewController: UIViewController {
         setupInputOutput()
         setupPreviewLayer()
         startRunningCaptureSession()
-        motionManager.startDeviceMotionUpdates(using: .xMagneticNorthZVertical)
+        
         takePhotoButton.layer.borderWidth = 6
         takePhotoButton.layer.borderColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0).cgColor
         takePhotoButton.layer.cornerRadius = 37.5
-        
+        motionManager.startDeviceMotionUpdates(using: .xMagneticNorthZVertical)
         counterView.layer.cornerRadius = 5
         counterView.layer.opacity = 30
         counterView.layer.borderWidth = 1
@@ -260,7 +260,7 @@ class ViewController: UIViewController {
         let uniCameraSetting = AVCapturePhotoSettings.init(from: photoSettings)
         photoOutput?.capturePhoto(with: uniCameraSetting, delegate: self)
         MotionManager.shared.gravità = motionManager.deviceMotion?.gravity.z
-        
+       
     }
     
     
@@ -283,17 +283,18 @@ class ViewController: UIViewController {
     
     @IBAction func dismissButton(_ sender: Any) {
         self.tabBarController?.selectedIndex = 0
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "ReloadCollectionViews"),object: nil))
     }
     
     
     @IBAction func showPhoto(_ sender: UIButton) {
         
         
-        if let _ = PhotoShared.shared.myPhotoArray {
+        if let _ = PhotoShared.shared.myPhotoSession {
             performSegue(withIdentifier: "mySegue", sender: self)
             queue.async {
-                for index in 0..<PhotoShared.shared.myPhotoArray!.count{
-                   PhotoShared.shared.myPhotoArray![index].score = self.classifier.calculateScore(image: PhotoShared.shared.myPhotoArray![index])
+                for index in 0..<PhotoShared.shared.myPhotoSession!.count{
+                   PhotoShared.shared.myPhotoSession![index].score = self.classifier.calculateScore(image: PhotoShared.shared.myPhotoSession![index])
                     
                 }
                 NotificationCenter.default.post(name: NSNotification.Name("finishCalculateScore"), object: nil)
@@ -332,17 +333,17 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
         if let imageData = photo.fileDataRepresentation() {
             print(imageData)
             image = UIImage(data: imageData)
-            let myPhoto = PhotoScore(image: image!, score: 0, gravity: MotionManager.shared.gravità!)
-            if let _ = PhotoShared.shared.myPhotoArray {
-                PhotoShared.shared.myPhotoArray!.append(myPhoto)
+            let myPhoto = PhotoScore(image: image!,gravity: MotionManager.shared.gravità!)
+            if let _ = PhotoShared.shared.myPhotoSession {
+                PhotoShared.shared.myPhotoSession!.append(myPhoto)
             } else {
-                PhotoShared.shared.myPhotoArray = [myPhoto]
+                PhotoShared.shared.myPhotoSession = [myPhoto]
             }
             
-//            print(PhotoShared.shared.myPhotoArray.count)
+//            print(PhotoShared.shared.myPhotoSession.count)
             UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
-            photoLittle.image = PhotoShared.shared.myPhotoArray!.last!.image
-            photoCounter.text = "\(PhotoShared.shared.myPhotoArray!.count)"
+           // photoLittle.image = PhotoShared.shared.myPhotoSession!.last!.image
+            photoCounter.text = "\(PhotoShared.shared.myPhotoSession!.count)"
         }
     }
 }

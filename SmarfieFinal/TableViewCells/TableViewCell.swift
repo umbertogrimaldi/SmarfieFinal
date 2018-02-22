@@ -9,15 +9,16 @@
 import UIKit
 
 class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
-    
+    static let shared = TableViewCell()
     var myPhoto: UIImage?
     var sourceController: UIViewController?
     var imageArray: [UIImage] = [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image6"), #imageLiteral(resourceName: "image7"), #imageLiteral(resourceName: "image8"), #imageLiteral(resourceName: "image9"), #imageLiteral(resourceName: "image10"), #imageLiteral(resourceName: "image11"), #imageLiteral(resourceName: "image12"), #imageLiteral(resourceName: "image13"), #imageLiteral(resourceName: "image14"), #imageLiteral(resourceName: "image15"), #imageLiteral(resourceName: "image16")]
 
-    @IBOutlet private weak var selfiesCollection: UICollectionView!
+    @IBOutlet open weak var selfiesCollection: UICollectionView!
     
+    @IBOutlet weak var placeholder: UIImageView!
     
-    override func awakeFromNib() {
+    override  func awakeFromNib() {
         super.awakeFromNib()
 //     MARK: - COLLECTIONVIEW DELEGATE AND DATASOURCE
         selfiesCollection.delegate = self
@@ -32,6 +33,14 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
         selfiesCollection.collectionViewLayout = layout
         layout.minimumInteritemSpacing = 2.5
         layout.minimumLineSpacing = 2.5
+        selfiesCollection.reloadData()
+        print (PhotoShared.shared.favourites) //DEBUG
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollections(_:)), name: Notification.Name("ReloadCollectionViews"), object: nil)
+        
+    }
+    
+    @objc func reloadCollections( _ sender: Notification){
+        selfiesCollection.reloadData()
     }
     
 
@@ -39,23 +48,25 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     //    MARK:- BOTTOM COLLECTION VIEW SETUP
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArray.count
+        return PhotoShared.shared.favourites.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
+        
         cell.layer.borderWidth = 0.1
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.cornerRadius = 5
         
         let cellImage = cell.viewWithTag(2) as! UIImageView
-        cellImage.image = imageArray[indexPath.row]
+        cellImage.image = PhotoShared.shared.favourites[indexPath.row].image
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        myPhoto = imageArray[indexPath.row]
+        myPhoto = PhotoShared.shared.favourites[indexPath.row].image
         let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MySelfiesDetailsViewController") as! MySelfiesDetailsViewController
         controller.photo = myPhoto
         let nav = UINavigationController(rootViewController: controller)
@@ -64,6 +75,12 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
         }
     }
 
+    
+}
+
+class VoidSecondCollectionViewCell:UICollectionViewCell{
+    
+    
 }
 
 

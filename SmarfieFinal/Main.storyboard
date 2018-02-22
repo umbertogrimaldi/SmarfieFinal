@@ -43,8 +43,17 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="voidFirstCell" id="yZQ-X8-LyF" customClass="VoidFirstCOllectionViewCell" customModule="SmarfieFinal" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="6.5" width="373" height="220"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="373" height="220"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </view>
+                                                            <size key="customSize" width="373" height="220"/>
+                                                        </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myCell" id="Llx-G4-g6B">
-                                                            <rect key="frame" x="0.0" y="6.5" width="230" height="220"/>
+                                                            <rect key="frame" x="383" y="6.5" width="230" height="220"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="230" height="220"/>
@@ -258,28 +267,6 @@
                                     <action selector="cameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Awh-lP-vNY"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJp-fD-AJf">
-                                <rect key="frame" x="16" y="556" width="101" height="96"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r1r-7r-cyG">
-                                        <rect key="frame" x="0.0" y="0.0" width="101" height="96"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsO-Oq-WMS">
-                                        <rect key="frame" x="0.0" y="0.0" width="101" height="96"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="WsO-Oq-WMS" secondAttribute="trailing" id="BA3-F2-5sp"/>
-                                    <constraint firstAttribute="bottom" secondItem="WsO-Oq-WMS" secondAttribute="bottom" id="GJ8-Jf-JNZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="r1r-7r-cyG" secondAttribute="trailing" id="IP1-3t-FJE"/>
-                                    <constraint firstAttribute="bottom" secondItem="r1r-7r-cyG" secondAttribute="bottom" id="KqK-vY-xxe"/>
-                                    <constraint firstItem="WsO-Oq-WMS" firstAttribute="leading" secondItem="tJp-fD-AJf" secondAttribute="leading" id="SbI-mb-uwl"/>
-                                    <constraint firstItem="r1r-7r-cyG" firstAttribute="leading" secondItem="tJp-fD-AJf" secondAttribute="leading" id="W84-72-s10"/>
-                                    <constraint firstItem="r1r-7r-cyG" firstAttribute="top" secondItem="tJp-fD-AJf" secondAttribute="top" id="aii-ha-xbE"/>
-                                    <constraint firstItem="WsO-Oq-WMS" firstAttribute="top" secondItem="tJp-fD-AJf" secondAttribute="top" id="ku9-Ah-tk8"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qg-dX-TEa">
                                 <rect key="frame" x="172" y="77" width="23" height="26"/>
                                 <constraints>
@@ -395,24 +382,6 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="498"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-mb-bFz">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="share" image="export" id="az4-w1-dld">
-                                        <color key="tintColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <connections>
-                                            <action selector="shareTapped:" destination="PuG-Ha-ReZ" id="8gd-eb-dih"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="l9S-JI-u8B"/>
-                                    <barButtonItem title="Item" image="delete" id="vNY-V7-H2M">
-                                        <color key="tintColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <connections>
-                                            <action selector="deleteTapped:" destination="PuG-Ha-ReZ" id="7pl-Qh-jiY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5nJ-mA-5eh">
                                 <rect key="frame" x="0.0" y="563" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -449,6 +418,29 @@
                                 <rect key="frame" x="172" y="544" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-mb-bFz">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="share" image="export" id="az4-w1-dld">
+                                        <color key="tintColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="shareTapped:" destination="PuG-Ha-ReZ" id="8gd-eb-dih"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="l9S-JI-u8B"/>
+                                    <barButtonItem systemItem="save" id="44Y-Ui-ADk">
+                                        <connections>
+                                            <action selector="saveToFavourites:" destination="PuG-Ha-ReZ" id="w8H-Rs-ofw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Item" image="delete" id="vNY-V7-H2M">
+                                        <color key="tintColor" red="0.17254901959999999" green="0.6705882353" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="deleteTapped:" destination="PuG-Ha-ReZ" id="7pl-Qh-jiY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

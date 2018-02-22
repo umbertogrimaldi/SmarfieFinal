@@ -26,10 +26,17 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
       
     }
     
+  
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
+       
+//        if let _ = PhotoShared.shared.bestPhotos{
+//            print (PhotoShared.shared.bestPhotos!)//DEBUG
+//
+//        }
     }
     
     
@@ -44,8 +51,8 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "myRow") as! FirstTableViewCell
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myRow") as! FirstTableViewCell
+        return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "myRow2") as! TableViewCell
             cell.sourceController = self
@@ -58,6 +65,7 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
         if indexPath.section == 0 {
             return 233
         } else {
+//            return TableViewCell.shared.selfiesCollection.layer.bounds.height
             return 700
         }
     }
@@ -69,9 +77,9 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
             headerView.backgroundColor = UIColor.white
             
            let headerLabel = UILabel()
-            headerLabel.font = UIFont.systemFont(ofSize: 25, weight: .medium)
+            headerLabel.font = .systemFont(ofSize: 25, weight: .medium)
             headerLabel.textColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)
-            headerLabel.text = "Favorites"
+            headerLabel.text = "Best Ones"
             headerLabel.sizeToFit()
             headerView.addSubview(headerLabel)
             headerLabel.frame = headerLabel.frame.offsetBy(dx: 20, dy: 15)
@@ -83,9 +91,9 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
             
             let headerLabel = UILabel()
 
-            headerLabel.font = UIFont.systemFont(ofSize: 25, weight: .medium)
+            headerLabel.font = .systemFont(ofSize: 25, weight: .medium)
             headerLabel.textColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)
-            headerLabel.text = "All"
+            headerLabel.text = "Favourites"
             headerLabel.sizeToFit()
             headerView.addSubview(headerLabel)
             headerLabel.frame = headerLabel.frame.offsetBy(dx: 20, dy: 15)
@@ -97,6 +105,7 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
         return 50
     }
 }
+
 
 
 extension MySelfiesViewController: UINavigationControllerDelegate {

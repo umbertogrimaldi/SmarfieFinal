@@ -82,7 +82,10 @@ class PhotoClassifier {
         let brightness = getBrightness(image: image.image)
         
         let faces = self.detectFaces(image: image.image)
-        if faces.count >= 1 {
+        
+        print("Ci sono :\(faces.count) facce \n la gravità è \(image.gravity) ")
+        
+        if faces.count >= 1 && image.gravity > -0.45{
             for face in faces{
                 self.smile = face.hasSmile
                 self.shutEyes = !face.leftEyeClosed && !face.rightEyeClosed
@@ -150,6 +153,8 @@ class PhotoClassifier {
             }else{
                 totalScore = totalScore/5
             }
+            
+            
             
             return totalScore
         } else {
