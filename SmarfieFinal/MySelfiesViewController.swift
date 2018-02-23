@@ -15,10 +15,11 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //         MARK:- DataSource and Delegate
       tableView.dataSource = self
       tableView.delegate = self
+      tableView.awakeFromNib()
+      tableView.reloadData()
         
         // MARK:- CUSTOM NAVIGATION
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
@@ -32,11 +33,7 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
-       
-//        if let _ = PhotoShared.shared.bestPhotos{
-//            print (PhotoShared.shared.bestPhotos!)//DEBUG
-//
-//        }
+
     }
     
     
@@ -65,8 +62,7 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
         if indexPath.section == 0 {
             return 233
         } else {
-//            return TableViewCell.shared.selfiesCollection.layer.bounds.height
-            return 700
+            return tableView.contentSize.height
         }
     }
     

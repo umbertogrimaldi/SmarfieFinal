@@ -58,19 +58,18 @@ class PhotoClassifier {
     }
     
     func detectFaces(image:UIImage)->[CIFaceFeature]{
-        let myImage = self.resizeImage(image: image, newWidth: 1000)
+        let myImage = self.resizeImage(image: image, newWidth: 300)
         let newImage = CIImage(image:myImage)!
         
         let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
         let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
-        let faces = faceDetector?.features(in:newImage, options: [CIDetectorSmile:true])
+        let options = [CIDetectorSmile:true,CIDetectorEyeBlink:true,CIDetectorFocalLength:true]
+let faces = faceDetector?.features(in:newImage, options: options)
         return faces as! [CIFaceFeature]
     }
     
     
-    func getBrightness(image:UIImage)->Double{
-        return (image.brightness)
-    }
+
     
     
     func calculateScore(image:PhotoScore)->Double{
@@ -79,7 +78,7 @@ class PhotoClassifier {
         faceScore = 0.0
         score = 0.0
         
-        let brightness = getBrightness(image: image.image)
+        let brightness = image.image.brightness
         
         let faces = self.detectFaces(image: image.image)
         
@@ -154,12 +153,9 @@ class PhotoClassifier {
                 totalScore = totalScore/5
             }
             
-            
-            
-            return totalScore
-        } else {
-            return 0
         }
+        print(totalScore)
+        return totalScore
     }
     
 }
@@ -200,4 +196,9 @@ public enum FaceSide{
     case right
     case left
     case front
+}
+
+public enum sessionState{
+    case active
+    case closed
 }

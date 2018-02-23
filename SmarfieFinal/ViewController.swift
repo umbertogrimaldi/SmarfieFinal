@@ -292,13 +292,18 @@ class ViewController: UIViewController {
         
         if let _ = PhotoShared.shared.myPhotoSession {
             performSegue(withIdentifier: "mySegue", sender: self)
-            queue.async {
-                for index in 0..<PhotoShared.shared.myPhotoSession!.count{
-                   PhotoShared.shared.myPhotoSession![index].score = self.classifier.calculateScore(image: PhotoShared.shared.myPhotoSession![index])
-                    
-                }
-                NotificationCenter.default.post(name: NSNotification.Name("finishCalculateScore"), object: nil)
-            }
+//            queue.async {
+//                for index in 0..<PhotoShared.shared.myPhotoSession!.count{
+//                    if let _ = PhotoShared.shared.myPhotoSession{
+//                        PhotoShared.shared.myPhotoSession![index].score = self.classifier.calculateScore(image: PhotoShared.shared.myPhotoSession![index])
+//                    }else {
+//                        continue
+//                    }
+//
+//                }
+//         }
+            
+         NotificationCenter.default.post(name: NSNotification.Name("reloadCollection"), object: nil)
             
         } else {
             let alertController = UIAlertController(title: "No Photos", message: "Take at least one selfie", preferredStyle: .alert)
@@ -330,18 +335,26 @@ public enum CameraPosition {
 extension ViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
-        if let imageData = photo.fileDataRepresentation() {
-            print(imageData)
-            image = UIImage(data: imageData)
-            let myPhoto = PhotoScore(image: image!,gravity: MotionManager.shared.gravità!)
-            if let _ = PhotoShared.shared.myPhotoSession {
-                PhotoShared.shared.myPhotoSession!.append(myPhoto)
-            } else {
-                PhotoShared.shared.myPhotoSession = [myPhoto]
+        if let _ = photo.fileDataRepresentation() {
+            
+            image = UIImage(data: photo.fileDataRepresentation()!)
+            let myPhoto = PhotoScore(image: self.image!,gravity: MotionManager.shared.gravità!)
+            
+            queue.async {
+                print ("Calcolo score")
+                myPhoto.score = self.classifier.calculateScore(image: myPhoto)
             }
+                
+                if let _ = PhotoShared.shared.myPhotoSession {
+                    PhotoShared.shared.myPhotoSession!.append(myPhoto)
+                } else {
+                    PhotoShared.shared.myPhotoSession = [myPhoto]
+                }
+            
+          
             
 //            print(PhotoShared.shared.myPhotoSession.count)
-            UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+//            UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
            // photoLittle.image = PhotoShared.shared.myPhotoSession!.last!.image
             photoCounter.text = "\(PhotoShared.shared.myPhotoSession!.count)"
         }

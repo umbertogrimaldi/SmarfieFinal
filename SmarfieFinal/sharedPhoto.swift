@@ -11,6 +11,10 @@ import UIKit
 
 class PhotoScore:Hashable{
     var hashValue: Int = 0
+    var image: UIImage
+    var score: Double?
+    var gravity: Double
+    
     
     static func ==(lhs: PhotoScore, rhs: PhotoScore) -> Bool {
         return lhs.image == rhs.image
@@ -21,20 +25,11 @@ class PhotoScore:Hashable{
         self.gravity = gravity
 
     }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    required convenience init(imageLiteralResourceName name: String) {
-//        fatalError("init(imageLiteralResourceName:) has not been implemented")
-//    }
+
     
-    var image: UIImage
-    var score: Double?
-    var gravity: Double
-    
+ 
 }
+
 
 
 

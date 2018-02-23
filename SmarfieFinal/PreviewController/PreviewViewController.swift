@@ -13,7 +13,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var myPhotoCollectionView: UICollectionView!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var mySessionCollectionView: UIImageView!
-
+    let queue = DispatchQueue(label: "com.smarfie.queue2", qos: .userInitiated)
     var centerPoint: CGPoint = CGPoint(x: 200, y: 400)
     
     override func viewDidLayoutSubviews() {
@@ -36,15 +36,18 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         navigationController?.delegate = self
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView(_:)), name: Notification.Name("finishCalculateScore"), object: nil)
+       reloadCollectionView()
     }
     
     
-    @objc func reloadCollectionView(_ sender:Notification) {
+     func reloadCollectionView() {
         print("finish reload")
         PhotoShared.shared.myPhotoSession!.sort(by: { (lhs:PhotoScore, rhs:PhotoScore) -> Bool in
+            
+            guard let _ = lhs.score, let  _ = rhs.score else{return false}
             return lhs.score! > rhs.score!
             })
+        
         if let _ = PhotoShared.shared.setOfBest {
             PhotoShared.shared.setOfBest!.insert(PhotoShared.shared.myPhotoSession!.first!)
 
@@ -53,9 +56,8 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         }
         
-        DispatchQueue.main.async {
              self.myPhotoCollectionView.reloadData()
-        }
+        
        
     }
     
@@ -153,15 +155,17 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let center = view.convert(self.myPhotoCollectionView.center, to: self.myPhotoCollectionView)
         if let index = myPhotoCollectionView!.indexPathForItem(at:center) {
 //            print(index)
-            if let score = PhotoShared.shared.myPhotoSession![index.row].score{
-            }
+            
             photo.image = PhotoShared.shared.myPhotoSession![index.row].image
         }
         
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        findCenterIndex()
+        DispatchQueue.main.async {
+            self.findCenterIndex()
+        }
+        
         
 
     }

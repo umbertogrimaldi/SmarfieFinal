@@ -15,12 +15,21 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     
     @IBOutlet weak var placeholder: UIImageView!
     
+    //      MARK:- COLLECTIONVIEW LAYOUT
+    
+    let voidLayout = UICollectionViewFlowLayout()
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
 //     MARK: - COLLECTIONVIEW DELEGATE AND DATASOURCE
         selfiesCollection.delegate = self
         selfiesCollection.dataSource = self
+        
+
+        
+        
         
 //     MARK:- SETTING COLLECTION VIEW INSETS
         var insets = self.selfiesCollection.contentInset
@@ -32,6 +41,8 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         self.selfiesCollection.contentInset = insets
         self.selfiesCollection.decelerationRate = UIScrollViewDecelerationRateNormal
         selfiesCollection.backgroundColor = UIColor.white
+        selfiesCollection.reloadData()
+        voidLayout.itemSize = CGSize(width: 375, height: 233)
          NotificationCenter.default.addObserver(self, selector: #selector(reloadCollections(_:)), name: Notification.Name("ReloadCollectionViews"), object: nil)
     }
     
@@ -43,11 +54,17 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     
 //    MARK:- COLLECTION VIEW SETUP
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return PhotoShared.shared.bestPhotos.count
+        if let best = PhotoShared.shared.setOfBest{
+           return best.count
+        }else{
+           return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print (PhotoShared.shared.bestPhotos.count)
         if let _ = PhotoShared.shared.setOfBest{
+             print("in if")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
             let cellImage = cell.viewWithTag(1) as! UIImageView
             cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row].image
@@ -56,22 +73,23 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
             cell.layer.borderColor = UIColor.gray.cgColor
              return cell
         }else{
+            print("in else")
+//            collectionView.collectionViewLayout = self.voidLayout
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidFirstCell", for: indexPath)
-            let cellImage = cell.viewWithTag(1) as! UIImageView
+            let cellImage = cell.contentView.viewWithTag(3) as! UIImageView
             cellImage.image =  #imageLiteral(resourceName: "Rectangle")
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
+            cell.layer.masksToBounds = true
+       
              return cell
         }
        
     }
-}
-
-class VoidFirstCOllectionViewCell:UICollectionViewCell{
- 
     
 }
+
 
 
 
