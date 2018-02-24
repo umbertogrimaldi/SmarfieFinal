@@ -32,7 +32,7 @@ class PhotoClassifier {
     var totalScore = 0.0
     var faceScore = 0.0
     var score:Double = 0.0
-    var photoInfo = "Hint: "
+   
     var goodPhotoInfo = "Wow! "
     var perfect:Bool = true
     
@@ -69,6 +69,7 @@ let faces = faceDetector?.features(in:newImage, options: options)
         bscore = 0.0
         faceScore = 0.0
         score = 0.0
+        var photoInfo = "Hint: "
         
         let brightness = image.image.brightness
         
@@ -115,13 +116,15 @@ let faces = faceDetector?.features(in:newImage, options: options)
             if faces.count == 1{
                 let x = (faces.first!.leftEyePosition.x + faces.first!.rightEyePosition.x) / 2
                 let y = faces.first!.bounds.midX
-                if x < y - 12 {
+                if x > y - 12 {
                     faceSide = .right
-                } else if x > y + 12 {
+                } else if x < y + 12 {
                     faceSide = .left
                 } else {
                     faceSide = .front
                 }
+                print (y-12," ",x," ",y+12)
+                print (faceSide!)
                 
                 if isInBestSide {
                     faceScore += 1.0
@@ -149,7 +152,7 @@ let faces = faceDetector?.features(in:newImage, options: options)
             
          
             
-            if image.gravity > -0.20 {
+            if image.gravity > -0.20 && image.gravity <= 0.20  {
                 score += 0.35
                 photoInfo += "go a little bit higher! \n"
                 perfect = false
@@ -173,7 +176,7 @@ let faces = faceDetector?.features(in:newImage, options: options)
         if faces.count >= 3{
             photoInfo = "You're too much guys, I can't give you any hint but i'm pretty shure you're really really beautiful"
         }
-
+        
         return (totalScore,photoInfo)
     }
     

@@ -12,30 +12,45 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
 
 
     @IBOutlet weak var tableView: UITableView!
+    let emptyView = EmptyView(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let frame = CGRect(x: 0, y: 0, width: 375, height: #imageLiteral(resourceName: "Group").size.height)
+        emptyView.frame = frame
+        
 //         MARK:- DataSource and Delegate
       tableView.dataSource = self
       tableView.delegate = self
-      tableView.awakeFromNib()
-      tableView.reloadData()
+        
         
         // MARK:- CUSTOM NAVIGATION
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
+    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
     UINavigationBar.appearance().tintColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)
         
-        NotificationCenter.default.addObserver(self, selector: #selector (reloadData(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
-      
+        NotificationCenter.default.addObserver(self, selector: #selector (reloadData(_:)), name: NSNotification.Name(rawValue: "ReloadCollectionViews"), object: nil)
+        if PhotoShared.shared.favourites.count == 0 && PhotoShared.shared.bestPhotos.count == 0{
+            self.view.addSubview(emptyView)
+            
+        }
     }
     
     @objc func reloadData(_ sender: Notification){
+        print("reloading...")
         tableView.reloadData()
     }
   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        view.bringSubview(toFront: emptyView)
+        emptyView.bringSubview(toFront: view)
+        if let _ = PhotoShared.shared.setOfBest {
+              emptyView.removeFromSuperview()
+        }else if let _ = PhotoShared.shared.setOfFavourites{
+            emptyView.removeFromSuperview()
+        }
+      
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
 
@@ -44,7 +59,14 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
     
     //    MARK: UITableViewDatasource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        var sections = 0
+        if let _ = PhotoShared.shared.setOfBest{
+            sections += 1
+        }
+        if let _ = PhotoShared.shared.setOfFavourites{
+            sections += 1
+        }
+        return sections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
