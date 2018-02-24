@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class PhotoScore:Hashable{
     var hashValue: Int = 0
@@ -37,6 +38,11 @@ class PhotoShared{
 
     
     static let shared = PhotoShared()
+    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
+    var best = [BestPhotos]()
+    
+    
+    
     
     var myPhotoSession: [PhotoScore]?
     

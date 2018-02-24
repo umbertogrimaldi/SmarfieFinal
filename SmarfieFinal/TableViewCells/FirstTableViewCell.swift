@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -14,6 +15,11 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var selfiesCollection: UICollectionView!
     
     @IBOutlet weak var placeholder: UIImageView!
+    
+    
+    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
+    var best = [BestPhotos]()
+    
     
     //      MARK:- COLLECTIONVIEW LAYOUT
     
@@ -63,6 +69,17 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print (PhotoShared.shared.bestPhotos.count)
+        
+        
+        // fetch delle immagini da coredata
+        do{
+        let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
+        self.best = bestSelfie
+        }catch {}
+        
+        // ovviamente restituisce solo se sta qualcosa in setOfBest e quindi va cambiato
+        // conviene fare un didload o didAppear ?, aggiornare da coredata l'array e fare il controllo
+        
         if let _ = PhotoShared.shared.setOfBest{
              print("in if")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
