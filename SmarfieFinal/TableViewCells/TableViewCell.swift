@@ -74,7 +74,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
             
         }else{
     
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath) as! voidCollectionViewCell
             let cellImage = cell.viewWithTag(0) as! UIImageView
             cellImage.image =  #imageLiteral(resourceName: "Rectangle")
             cell.layer.borderWidth = 0.1
@@ -90,11 +90,12 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
             myPhoto = PhotoShared.shared.favourites[indexPath.row]
             let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MySelfiesDetailsViewController") as! MySelfiesDetailsViewController
             controller.photo = myPhoto
+            controller.index = indexPath.row
+            controller.photoType = .favourite
             let nav = UINavigationController(rootViewController: controller)
             if let source = sourceController {
-                source.present(nav, animated: true, completion: nil)
+                source.present(_:nav, animated:true, completion:nil)
             }
-            
         }else{
             return
         }

@@ -13,6 +13,8 @@ class MySelfiesDetailsViewController: UIViewController {
     @IBOutlet weak var photoImage: UIImageView!
     
     var photo: UIImage?
+    var index: Int?
+    var photoType:PhotoType?
     
     
     override func viewDidLoad() {
@@ -43,19 +45,30 @@ class MySelfiesDetailsViewController: UIViewController {
     
     let alertController = UIAlertController(title: "Delete", message: "Do you want to delete the collection?", preferredStyle: .actionSheet)
         
-        let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: deleteTapped)
+        let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            if self.photoType! == .favourite{
+                guard let _ = PhotoShared.shared.setOfFavourites else {return}
+                if let index = PhotoShared.shared.setOfFavourites!.index(of:self.photo!){
+                    PhotoShared.shared.setOfFavourites!.remove(at:index)
+                }
+            }else {
+                guard let _ = PhotoShared.shared.setOfBest else {return}
+                if let index = PhotoShared.shared.setOfBest!.index(of:self.photo!){
+                    PhotoShared.shared.setOfBest!.remove(at:index)
+                }
+            }
+        })
         
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            alertController.dismiss(animated: true, completion: nil)
+        })
         
         alertController.addAction(deleteButton)
         alertController.addAction(cancelButton)
         
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    func deleteTapped(sender: UIAlertAction) -> Void {
-        //       FIXME: - ADD FUNCTION
-    }
+ 
 
     
     
@@ -84,5 +97,8 @@ extension MySelfiesDetailsViewController: UINavigationControllerDelegate {
     }
 }
 
-
+ enum PhotoType{
+    case favourite
+    case best
+}
 

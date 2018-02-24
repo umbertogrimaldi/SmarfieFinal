@@ -54,6 +54,7 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myRow") as! FirstTableViewCell
+            cell.sourceController = self
         return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "myRow2") as! TableViewCell
