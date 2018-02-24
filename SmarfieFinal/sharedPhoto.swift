@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class PhotoScore:Hashable{
     var hashValue: Int = 0
@@ -37,21 +38,37 @@ class PhotoShared{
 
     
     static let shared = PhotoShared()
+    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
+    var best = [BestPhotos]()
+    
+    
+    
     
     var myPhotoSession: [PhotoScore]?
+    
+  //  var bestPhotos: [UIImage]?
+    // Commentato xkè mi serve di tipo UIimage per farla uscire nell cella -- a causa del retrieving da coreData
     
     var bestPhotos:[PhotoScore]{
         get{
             if let _ = setOfBest{
+
+
+
+
+
                 return setOfBest!.sorted(by: { (lhs, rhs) -> Bool in
                     return lhs.score! > rhs.score!
                 })
             }else{
                 return []
             }
-            
+
         }
     }
+    
+    
+    
     
     var favourites:[PhotoScore]{
         get{
@@ -65,6 +82,21 @@ class PhotoShared{
           
         }
     }
+    
+//    func updateBest(){
+//        do{
+//            let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
+//            self.best = bestSelfie
+//            for best in bestSelfie{
+//                bestPhotos?.append(UIImage(data: best.image! as Data)!)
+//            }
+//        }catch {}
+//        
+//       
+//        
+//    }
+    
+    
     
     var setOfBest:Set<PhotoScore>?
     

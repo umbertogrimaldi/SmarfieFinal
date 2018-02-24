@@ -58,7 +58,43 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
              self.myPhotoCollectionView.reloadData()
         
+        
+        
+        // Salvo la Prima in CoreData
+        let imgData = UIImagePNGRepresentation((PhotoShared.shared.myPhotoSession?.first?.image)!)
+        
+        let best = BestPhotos(context: PersistenceService.context)
+        best.image = imgData as NSData?
+        PersistenceService.saveContext()
        
+        
+        
+        
+        
+        
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
+    func detectFaces(image:UIImage)->[CIFaceFeature]{
+        let myImage = self.resizeImage(image: image, newWidth: 300)
+        let newImage = CIImage(image:myImage)!
+        
+        let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+        let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
+        let options = [CIDetectorSmile:true,CIDetectorEyeBlink:true,CIDetectorFocalLength:true]
+        let faces = faceDetector?.features(in:newImage, options: options)
+        return faces as! [CIFaceFeature]
     }
     
     

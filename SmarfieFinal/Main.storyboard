@@ -51,7 +51,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TA1-C6-4il">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="220"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </view>

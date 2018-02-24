@@ -24,8 +24,9 @@
 		8348C3C7203DBD990009FD5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3C6203DBD980009FD5B /* ViewController.swift */; };
 		8348C3C9203DBDA50009FD5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3C8203DBDA50009FD5B /* Main.storyboard */; };
 		B931ED852040CDE700EFD3E7 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931ED842040CDE700EFD3E7 /* PersistenceService.swift */; };
+		B931ED882040CFAC00EFD3E7 /* BestPhotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931ED862040CFAC00EFD3E7 /* BestPhotos+CoreDataClass.swift */; };
+		B931ED892040CFAC00EFD3E7 /* BestPhotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931ED872040CFAC00EFD3E7 /* BestPhotos+CoreDataProperties.swift */; };
 		B9BA7213204074C500B4083C /* SmarfieFinal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B9BA7211204074C500B4083C /* SmarfieFinal.xcdatamodeld */; };
-		B9BA722620407C0B00B4083C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA722520407C0B00B4083C /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +49,9 @@
 		8348C3C6203DBD980009FD5B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8348C3C8203DBDA50009FD5B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B931ED842040CDE700EFD3E7 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		B931ED862040CFAC00EFD3E7 /* BestPhotos+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BestPhotos+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B931ED872040CFAC00EFD3E7 /* BestPhotos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BestPhotos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B9BA7212204074C500B4083C /* PhotoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoModel.xcdatamodel; sourceTree = "<group>"; };
-		B9BA722520407C0B00B4083C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +125,9 @@
 		B9BA721C2040773200B4083C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B931ED862040CFAC00EFD3E7 /* BestPhotos+CoreDataClass.swift */,
+				B931ED872040CFAC00EFD3E7 /* BestPhotos+CoreDataProperties.swift */,
 				B9BA7211204074C500B4083C /* SmarfieFinal.xcdatamodeld */,
-				B9BA722520407C0B00B4083C /* DataController.swift */,
 				B931ED842040CDE700EFD3E7 /* PersistenceService.swift */,
 			);
 			path = Model;
@@ -204,13 +207,14 @@
 			files = (
 				8348C3C3203DBD720009FD5B /* FirstTableViewCell.swift in Sources */,
 				8348C3B5203DBD420009FD5B /* MySelfiesViewController.swift in Sources */,
+				B931ED892040CFAC00EFD3E7 /* BestPhotos+CoreDataProperties.swift in Sources */,
 				8348C3C2203DBD720009FD5B /* TableViewCell.swift in Sources */,
 				19CFC391203F975F00721086 /* VoidCollectionViewCell.swift in Sources */,
 				8348C3BC203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift in Sources */,
 				8348C3C7203DBD990009FD5B /* ViewController.swift in Sources */,
 				B9BA7213204074C500B4083C /* SmarfieFinal.xcdatamodeld in Sources */,
-				B9BA722620407C0B00B4083C /* DataController.swift in Sources */,
 				8348C3BE203DBD6B0009FD5B /* sharedPhoto.swift in Sources */,
+				B931ED882040CFAC00EFD3E7 /* BestPhotos+CoreDataClass.swift in Sources */,
 				B931ED852040CDE700EFD3E7 /* PersistenceService.swift in Sources */,
 				8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */,
 				191F40E4203DC66A00380050 /* MotionManager.swift in Sources */,
