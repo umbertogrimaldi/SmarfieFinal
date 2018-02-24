@@ -24,9 +24,14 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
         // MARK:- CUSTOM NAVIGATION
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
     UINavigationBar.appearance().tintColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector (reloadData(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
       
     }
     
+    @objc func reloadData(_ sender: Notification){
+        tableView.reloadData()
+    }
   
     
     override func viewWillAppear(_ animated: Bool) {

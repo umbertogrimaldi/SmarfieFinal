@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		191F40E2203DC61800380050 /* PhotoClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F40E1203DC61800380050 /* PhotoClassifier.swift */; };
 		191F40E4203DC66A00380050 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F40E3203DC66A00380050 /* MotionManager.swift */; };
-		19CFC391203F975F00721086 /* VoidCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CFC390203F975F00721086 /* VoidCollectionViewCell.swift */; };
+		196CBB2B2040790800E91245 /* DataPersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196CBB2A2040790800E91245 /* DataPersistanceManager.swift */; };
 		8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3A0203DBCB70009FD5B /* AppDelegate.swift */; };
 		8348C3A8203DBCB70009FD5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A7203DBCB70009FD5B /* Assets.xcassets */; };
 		8348C3AB203DBCB70009FD5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */; };
@@ -28,7 +28,7 @@
 /* Begin PBXFileReference section */
 		191F40E1203DC61800380050 /* PhotoClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoClassifier.swift; sourceTree = "<group>"; };
 		191F40E3203DC66A00380050 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		19CFC390203F975F00721086 /* VoidCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidCollectionViewCell.swift; sourceTree = "<group>"; };
+		196CBB2A2040790800E91245 /* DataPersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistanceManager.swift; sourceTree = "<group>"; };
 		8348C39D203DBCB70009FD5B /* SmarfieFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmarfieFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8348C3A0203DBCB70009FD5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8348C3A7203DBCB70009FD5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 		8348C39F203DBCB70009FD5B /* SmarfieFinal */ = {
 			isa = PBXGroup;
 			children = (
-				19CFC390203F975F00721086 /* VoidCollectionViewCell.swift */,
 				8348C3A0203DBCB70009FD5B /* AppDelegate.swift */,
+				196CBB2A2040790800E91245 /* DataPersistanceManager.swift */,
 				8348C3C6203DBD980009FD5B /* ViewController.swift */,
 				8348C3B2203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift */,
 				8348C3B4203DBD420009FD5B /* MySelfiesViewController.swift */,
@@ -188,8 +188,8 @@
 				8348C3C3203DBD720009FD5B /* FirstTableViewCell.swift in Sources */,
 				8348C3B5203DBD420009FD5B /* MySelfiesViewController.swift in Sources */,
 				8348C3C2203DBD720009FD5B /* TableViewCell.swift in Sources */,
-				19CFC391203F975F00721086 /* VoidCollectionViewCell.swift in Sources */,
 				8348C3BC203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift in Sources */,
+				196CBB2B2040790800E91245 /* DataPersistanceManager.swift in Sources */,
 				8348C3C7203DBD990009FD5B /* ViewController.swift in Sources */,
 				8348C3BE203DBD6B0009FD5B /* sharedPhoto.swift in Sources */,
 				8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */,
@@ -330,7 +330,7 @@
 				DEVELOPMENT_TEAM = D4L4S7MAUX;
 				INFOPLIST_FILE = SmarfieFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.SmarfieFinal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecorp.SmarfieFinal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -345,7 +345,7 @@
 				DEVELOPMENT_TEAM = D4L4S7MAUX;
 				INFOPLIST_FILE = SmarfieFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.SmarfieFinal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecorp.SmarfieFinal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

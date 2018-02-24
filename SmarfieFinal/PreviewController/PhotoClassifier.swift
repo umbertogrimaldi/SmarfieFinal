@@ -198,7 +198,7 @@ public enum FaceSide{
     case front
 }
 
-public enum sessionState{
+public enum SessionState{
     case active
     case closed
 }

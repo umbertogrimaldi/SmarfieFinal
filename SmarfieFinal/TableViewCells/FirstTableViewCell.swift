@@ -67,7 +67,7 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
              print("in if")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
             let cellImage = cell.viewWithTag(1) as! UIImageView
-            cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row].image
+            cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor

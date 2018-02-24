@@ -51,7 +51,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TA1-C6-4il">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="220"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </view>
@@ -482,7 +482,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QHE-uB-hOG"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Collection" id="5ah-ed-sCn"/>
+                    <navigationItem key="navigationItem" title="Collection" id="5ah-ed-sCn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="avs-h1-uRo">
+                            <connections>
+                                <action selector="onTapDone:" destination="PuG-Ha-ReZ" id="Dt7-jo-spD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myPhotoCollectionView" destination="5nJ-mA-5eh" id="y1J-dM-B2S"/>
                         <outlet property="mySessionCollectionView" destination="LEG-nB-7LE" id="edx-oq-bU3"/>
@@ -532,7 +538,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoj-np-hK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990.39999999999998" y="133.13343328335833"/>
+            <point key="canvasLocation" x="498" y="133"/>
         </scene>
         <!--My Selfies-->
         <scene sceneID="eny-AH-FyS">

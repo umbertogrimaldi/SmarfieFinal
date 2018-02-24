@@ -9,6 +9,7 @@
 import UIKit
 
 class PreviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    let dataPersistanceManager = DataPersistanceManager.shared
     
     @IBOutlet weak var myPhotoCollectionView: UICollectionView!
     @IBOutlet weak var photo: UIImageView!
@@ -27,6 +28,29 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         myPhotoCollectionView.backgroundColor = UIColor.white
     }
     
+    @IBAction func onTapDone(_ sender: Any) {
+        if let _ = PhotoShared.shared.setOfBest {
+            PhotoShared.shared.setOfBest!.insert(PhotoShared.shared.myPhotoSession!.first!.image)
+            
+        }else{
+            PhotoShared.shared.setOfBest = [PhotoShared.shared.myPhotoSession!.first!.image]
+            
+        }
+        self.tabBarController?.selectedIndex = 0
+        navigationController?.popToRootViewController(animated: true)
+        
+        PhotoShared.shared.myPhotoSession = nil
+        ViewController.sessionState = .closed
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "ReloadCollectionViews"),object: nil))
+//        queue.async {
+//            self.dataPersistanceManager.savePhotos(PhotoShared.shared.favourites, named: "Favourites")
+//            self.dataPersistanceManager.savePhotos(PhotoShared.shared.bestPhotos, named: "BestPhotos")
+//
+//        }
+        
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +59,6 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         myPhotoCollectionView.dataSource = self
         navigationController?.delegate = self
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
-        
        reloadCollectionView()
     }
     
@@ -47,18 +70,8 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
             guard let _ = lhs.score, let  _ = rhs.score else{return false}
             return lhs.score! > rhs.score!
             })
-        
-        if let _ = PhotoShared.shared.setOfBest {
-            PhotoShared.shared.setOfBest!.insert(PhotoShared.shared.myPhotoSession!.first!)
 
-        }else{
-            PhotoShared.shared.setOfBest = [PhotoShared.shared.myPhotoSession!.first!]
-
-        }
-        
              self.myPhotoCollectionView.reloadData()
-        
-       
     }
     
     
@@ -77,9 +90,9 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         
         if let _ = PhotoShared.shared.setOfFavourites{
-               PhotoShared.shared.setOfFavourites!.insert(photoToSave!)
+               PhotoShared.shared.setOfFavourites!.insert(photoToSave!.image)
         }else{
-               PhotoShared.shared.setOfFavourites = [photoToSave!]
+               PhotoShared.shared.setOfFavourites = [photoToSave!.image]
         }
          let alert = UIAlertController(title: "OK!", message: "Your photo has been saved as a favourite", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Cool!", style: .default) { _ in
@@ -165,36 +178,8 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         DispatchQueue.main.async {
             self.findCenterIndex()
         }
-        
-        
-
     }
-    
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        findCenterIndex()
-//    }
-//
-//
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        findCenterIndex()
-//    }
-//
-//
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        findCenterIndex()
-//    }
-//
-//
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        findCenterIndex()
-//    }
-//
-//
-//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-//        findCenterIndex()
-//    }
-//
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

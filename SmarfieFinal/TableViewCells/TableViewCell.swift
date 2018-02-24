@@ -67,7 +67,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
             cell.layer.cornerRadius = 5
 //            collectionView.collectionViewLayout = layout
             let cellImage = cell.viewWithTag(2) as! UIImageView
-            cellImage.image = PhotoShared.shared.favourites[indexPath.row].image
+            cellImage.image = PhotoShared.shared.favourites[indexPath.row]
             return cell
             
         }else{
@@ -86,7 +86,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let _ = PhotoShared.shared.setOfFavourites{
-            myPhoto = PhotoShared.shared.favourites[indexPath.row].image
+            myPhoto = PhotoShared.shared.favourites[indexPath.row]
             let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MySelfiesDetailsViewController") as! MySelfiesDetailsViewController
             controller.photo = myPhoto
             let nav = UINavigationController(rootViewController: controller)

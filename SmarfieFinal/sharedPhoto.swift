@@ -16,6 +16,7 @@ class PhotoScore:Hashable{
     var gravity: Double
     
     
+    
     static func ==(lhs: PhotoScore, rhs: PhotoScore) -> Bool {
         return lhs.image == rhs.image
     }
@@ -32,7 +33,6 @@ class PhotoScore:Hashable{
 
 
 
-
 class PhotoShared{
 
     
@@ -40,36 +40,71 @@ class PhotoShared{
     
     var myPhotoSession: [PhotoScore]?
     
-    var bestPhotos:[PhotoScore]{
+  
+    
+    var bestImages:[UIImage]?
+    
+    var bestPhotos:[UIImage]{
+        
         get{
+            var images:[UIImage] = []
             if let _ = setOfBest{
-                return setOfBest!.sorted(by: { (lhs, rhs) -> Bool in
-                    return lhs.score! > rhs.score!
-                })
+                for x in setOfBest!{
+                    images.append(x)
+                }
+                
+                return images
             }else{
                 return []
+                }
+          
             }
-            
+        
+        set {
+            if let _ = setOfBest{
+                for x in newValue{
+                    setOfBest!.insert(x)
+                }
+            }else{
+                setOfBest = Set(newValue)
+            }
         }
     }
     
-    var favourites:[PhotoScore]{
+    
+    
+    var favourites:[UIImage]{
         get{
-            if let _ = setOfFavourites{
-                return setOfFavourites!.sorted(by: { (lhs, rhs) -> Bool in
-                    return lhs.score! > rhs.score!
-                })
+            var images:[UIImage] = []
+            if let _ = setOfBest{
+                for x in setOfFavourites!{
+                    images.append(x)
+                }
+                return images
             }else{
                 return []
+             }
+            
+           }
+        
+        set {
+            if let _ = setOfFavourites{
+                for x in newValue{
+                    setOfFavourites!.insert(x)
+                }
+            }else{
+                setOfFavourites = Set(newValue)
             }
           
         }
+    
     }
     
-    var setOfBest:Set<PhotoScore>?
+    
+    var setOfBest:Set<UIImage>?
     
    
-    var setOfFavourites:Set<PhotoScore>?
+    var setOfFavourites:Set<UIImage>?
 }
 
 

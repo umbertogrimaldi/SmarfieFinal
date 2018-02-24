@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import CoreMotion
 class ViewController: UIViewController {
-    
+    static var sessionState:SessionState = .active
     var currentCameraPosition: CameraPosition?
     var frontCameraInput:AVCaptureInput?
     var backCameraInput:AVCaptureInput?
@@ -34,6 +34,7 @@ class ViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
     
     
     //    MARK:- Outlets
@@ -60,7 +61,6 @@ class ViewController: UIViewController {
         setupInputOutput()
         setupPreviewLayer()
         startRunningCaptureSession()
-        
         takePhotoButton.layer.borderWidth = 6
         takePhotoButton.layer.borderColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0).cgColor
         takePhotoButton.layer.cornerRadius = 37.5
@@ -69,6 +69,7 @@ class ViewController: UIViewController {
         counterView.layer.opacity = 30
         counterView.layer.borderWidth = 1
         counterView.layer.borderColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0).cgColor
+       
         
     }
     
@@ -174,6 +175,7 @@ class ViewController: UIViewController {
     
     func startRunningCaptureSession() {
         captureSession.startRunning()
+        ViewController.sessionState = .active
     }
     
     
@@ -258,8 +260,10 @@ class ViewController: UIViewController {
     @IBAction func cameraButton(_ sender: Any) {
         photoSettings.flashMode = self.flashMode
         let uniCameraSetting = AVCapturePhotoSettings.init(from: photoSettings)
-        photoOutput?.capturePhoto(with: uniCameraSetting, delegate: self)
+        ViewController.sessionState = .active
         MotionManager.shared.gravità = motionManager.deviceMotion?.gravity.z
+        photoOutput?.capturePhoto(with: uniCameraSetting, delegate: self)
+       
        
     }
     
@@ -282,8 +286,26 @@ class ViewController: UIViewController {
     
     
     @IBAction func dismissButton(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 0
-        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "ReloadCollectionViews"),object: nil))
+        let alert = UIAlertController(title: "Attention", message: "This action will end your session", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.tabBarController?.selectedIndex = 0
+            PhotoShared.shared.myPhotoSession = nil
+            ViewController.sessionState = .closed
+            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "ReloadCollectionViews"),object: nil))
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        if ViewController.sessionState == .active{
+            self.present(alert, animated: true, completion: nil)
+        }else{
+              self.tabBarController?.selectedIndex = 0
+        }
+       
+        
     }
     
     
@@ -292,17 +314,6 @@ class ViewController: UIViewController {
         
         if let _ = PhotoShared.shared.myPhotoSession {
             performSegue(withIdentifier: "mySegue", sender: self)
-//            queue.async {
-//                for index in 0..<PhotoShared.shared.myPhotoSession!.count{
-//                    if let _ = PhotoShared.shared.myPhotoSession{
-//                        PhotoShared.shared.myPhotoSession![index].score = self.classifier.calculateScore(image: PhotoShared.shared.myPhotoSession![index])
-//                    }else {
-//                        continue
-//                    }
-//
-//                }
-//         }
-            
          NotificationCenter.default.post(name: NSNotification.Name("reloadCollection"), object: nil)
             
         } else {
