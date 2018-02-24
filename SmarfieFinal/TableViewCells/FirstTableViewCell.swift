@@ -68,7 +68,7 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print (PhotoShared.shared.bestPhotos.count)
+//        print (PhotoShared.shared.bestPhotos.count)
         
         
         // fetch delle immagini da coredata
