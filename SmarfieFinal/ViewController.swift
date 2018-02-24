@@ -334,6 +334,7 @@ class ViewController: UIViewController {
 }
 
 
+
 //MARK:- CAMERA POSITION ENUMERATION
 public enum CameraPosition {
     case front
@@ -352,8 +353,9 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
             let myPhoto = PhotoScore(image: self.image!,gravity: MotionManager.shared.gravità!)
             
             queue.async {
-                print ("Calcolo score")
-                myPhoto.score = self.classifier.calculateScore(image: myPhoto)
+                let result = self.classifier.calculateScore(image: myPhoto)
+                myPhoto.score = result.0
+                myPhoto.info = result.1
             }
                 
                 if let _ = PhotoShared.shared.myPhotoSession {
@@ -361,12 +363,6 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
                 } else {
                     PhotoShared.shared.myPhotoSession = [myPhoto]
                 }
-            
-          
-            
-//            print(PhotoShared.shared.myPhotoSession.count)
-//            UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
-           // photoLittle.image = PhotoShared.shared.myPhotoSession!.last!.image
             photoCounter.text = "\(PhotoShared.shared.myPhotoSession!.count)"
         }
     }

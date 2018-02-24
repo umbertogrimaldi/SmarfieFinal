@@ -8,14 +8,14 @@
 
 import Foundation
 import UIKit
-import CoreData
+//import CoreData
 
 class PhotoScore:Hashable{
     var hashValue: Int = 0
     var image: UIImage
     var score: Double?
     var gravity: Double
-    
+    var info:String?
     
     
     static func ==(lhs: PhotoScore, rhs: PhotoScore) -> Bool {
@@ -38,8 +38,8 @@ class PhotoShared{
 
     
     static let shared = PhotoShared()
-    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
-    var best = [BestPhotos]()
+//    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
+//    var best = [BestPhotos]()
     
     
     
@@ -108,8 +108,7 @@ class PhotoShared{
     
     
     var setOfBest:Set<UIImage>?
-    
-   
+
     var setOfFavourites:Set<UIImage>?
 }
 

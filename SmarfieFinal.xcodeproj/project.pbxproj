@@ -10,6 +10,8 @@
 		191F40E2203DC61800380050 /* PhotoClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F40E1203DC61800380050 /* PhotoClassifier.swift */; };
 		191F40E4203DC66A00380050 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F40E3203DC66A00380050 /* MotionManager.swift */; };
 		196CBB2B2040790800E91245 /* DataPersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196CBB2A2040790800E91245 /* DataPersistanceManager.swift */; };
+		196CBB302040F40E00E91245 /* voidCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196CBB2E2040F40E00E91245 /* voidCollectionViewCell.swift */; };
+		196CBB312040F40E00E91245 /* voidCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196CBB2F2040F40E00E91245 /* voidCollectionViewCell.xib */; };
 		8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3A0203DBCB70009FD5B /* AppDelegate.swift */; };
 		8348C3A8203DBCB70009FD5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A7203DBCB70009FD5B /* Assets.xcassets */; };
 		8348C3AB203DBCB70009FD5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */; };
@@ -33,6 +35,8 @@
 		191F40E1203DC61800380050 /* PhotoClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoClassifier.swift; sourceTree = "<group>"; };
 		191F40E3203DC66A00380050 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		196CBB2A2040790800E91245 /* DataPersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistanceManager.swift; sourceTree = "<group>"; };
+		196CBB2E2040F40E00E91245 /* voidCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voidCollectionViewCell.swift; sourceTree = "<group>"; };
+		196CBB2F2040F40E00E91245 /* voidCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = voidCollectionViewCell.xib; sourceTree = "<group>"; };
 		8348C39D203DBCB70009FD5B /* SmarfieFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmarfieFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8348C3A0203DBCB70009FD5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8348C3A7203DBCB70009FD5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,11 +69,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		196CBB2D2040F28D00E91245 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				B931ED872040CFAC00EFD3E7 /* BestPhotos+CoreDataProperties.swift */,
+				B9BA7211204074C500B4083C /* SmarfieFinal.xcdatamodeld */,
+				B931ED862040CFAC00EFD3E7 /* BestPhotos+CoreDataClass.swift */,
+				B931ED842040CDE700EFD3E7 /* PersistenceService.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		8348C394203DBCB70009FD5B = {
 			isa = PBXGroup;
 			children = (
 				8348C39F203DBCB70009FD5B /* SmarfieFinal */,
 				8348C39E203DBCB70009FD5B /* Products */,
+				196CBB2D2040F28D00E91245 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,20 +132,11 @@
 			isa = PBXGroup;
 			children = (
 				8348C3C0203DBD720009FD5B /* TableViewCell.swift */,
+				196CBB2E2040F40E00E91245 /* voidCollectionViewCell.swift */,
+				196CBB2F2040F40E00E91245 /* voidCollectionViewCell.xib */,
 				8348C3C1203DBD720009FD5B /* FirstTableViewCell.swift */,
 			);
 			path = TableViewCells;
-			sourceTree = "<group>";
-		};
-		B9BA721C2040773200B4083C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B931ED862040CFAC00EFD3E7 /* BestPhotos+CoreDataClass.swift */,
-				B931ED872040CFAC00EFD3E7 /* BestPhotos+CoreDataProperties.swift */,
-				B9BA7211204074C500B4083C /* SmarfieFinal.xcdatamodeld */,
-				B931ED842040CDE700EFD3E7 /* PersistenceService.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				196CBB312040F40E00E91245 /* voidCollectionViewCell.xib in Resources */,
 				8348C3C9203DBDA50009FD5B /* Main.storyboard in Resources */,
 				8348C3AB203DBCB70009FD5B /* LaunchScreen.storyboard in Resources */,
 				8348C3A8203DBCB70009FD5B /* Assets.xcassets in Resources */,
@@ -214,6 +222,7 @@
 				B9BA7213204074C500B4083C /* SmarfieFinal.xcdatamodeld in Sources */,
 				8348C3BE203DBD6B0009FD5B /* sharedPhoto.swift in Sources */,
 				B931ED882040CFAC00EFD3E7 /* BestPhotos+CoreDataClass.swift in Sources */,
+				196CBB302040F40E00E91245 /* voidCollectionViewCell.swift in Sources */,
 				B931ED852040CDE700EFD3E7 /* PersistenceService.swift in Sources */,
 				8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */,
 				191F40E4203DC66A00380050 /* MotionManager.swift in Sources */,
@@ -350,7 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N6AW68PRVM;
+				DEVELOPMENT_TEAM = D4L4S7MAUX;
 				INFOPLIST_FILE = SmarfieFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecorp.SmarfieFinal;
@@ -365,7 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N6AW68PRVM;
+				DEVELOPMENT_TEAM = D4L4S7MAUX;
 				INFOPLIST_FILE = SmarfieFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecorp.SmarfieFinal;

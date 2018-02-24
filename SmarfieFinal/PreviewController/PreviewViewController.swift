@@ -11,6 +11,20 @@ import UIKit
 class PreviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     let dataPersistanceManager = DataPersistanceManager.shared
     
+    @IBOutlet weak var scoreLabel: UILabel!{
+        didSet{
+            scoreLabel.layer.cornerRadius = 5
+            scoreLabel.layer.borderWidth = 0.1
+        }
+    }
+    
+    @IBOutlet weak var descriptionLabel: UILabel!{
+        didSet{
+            descriptionLabel.layer.cornerRadius = 5
+            descriptionLabel.layer.borderWidth = 0.1
+        }
+    }
+    
     @IBOutlet weak var myPhotoCollectionView: UICollectionView!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var mySessionCollectionView: UIImageView!
@@ -28,6 +42,8 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         myPhotoCollectionView.backgroundColor = UIColor.white
     }
     
+    
+    
     @IBAction func onTapDone(_ sender: Any) {
         if let _ = PhotoShared.shared.setOfBest {
             PhotoShared.shared.setOfBest!.insert(PhotoShared.shared.myPhotoSession!.first!.image)
@@ -42,11 +58,6 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         PhotoShared.shared.myPhotoSession = nil
         ViewController.sessionState = .closed
         NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "ReloadCollectionViews"),object: nil))
-//        queue.async {
-//            self.dataPersistanceManager.savePhotos(PhotoShared.shared.favourites, named: "Favourites")
-//            self.dataPersistanceManager.savePhotos(PhotoShared.shared.bestPhotos, named: "BestPhotos")
-//
-//        }
         
     }
     
@@ -60,6 +71,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         navigationController?.delegate = self
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
        reloadCollectionView()
+        
     }
     
     
@@ -137,13 +149,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     
-  
     
-    
-    @IBAction func saveButton(_ sender: Any) {
-//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        dismiss(animated: true, completion: nil)
-    }
     
     //    MARK:- Collection View
     
@@ -167,9 +173,22 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     private func findCenterIndex() {
         let center = view.convert(self.myPhotoCollectionView.center, to: self.myPhotoCollectionView)
         if let index = myPhotoCollectionView!.indexPathForItem(at:center) {
-//            print(index)
-            
             photo.image = PhotoShared.shared.myPhotoSession![index.row].image
+            if let info = PhotoShared.shared.myPhotoSession![index.row].info{
+            descriptionLabel.text = info
+            }
+            if let score = PhotoShared.shared.myPhotoSession![index.row].score{
+                scoreLabel.text = "\(Int(score))%"
+                if score < 40{
+                    scoreLabel.textColor = .red
+                }else if score < 60{
+                    scoreLabel.textColor = .yellow
+                }else{
+                    scoreLabel.textColor = .green
+                }
+            }
+            
+            
         }
         
     }

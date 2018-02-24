@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+//import CoreData
 
 class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -17,8 +17,8 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var placeholder: UIImageView!
     
     
-    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
-    var best = [BestPhotos]()
+//    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
+//    var best = [BestPhotos]()
     
     
     //      MARK:- COLLECTIONVIEW LAYOUT
@@ -72,10 +72,10 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         
         
         // fetch delle immagini da coredata
-        do{
-        let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
-        self.best = bestSelfie
-        }catch {}
+//        do{
+//        let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
+//        self.best = bestSelfie
+//        }catch {}
         
         // ovviamente restituisce solo se sta qualcosa in setOfBest e quindi va cambiato
         // conviene fare un didload o didAppear ?, aggiornare da coredata l'array e fare il controllo
@@ -92,13 +92,12 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         }else{
             print("in else")
 //            collectionView.collectionViewLayout = self.voidLayout
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidFirstCell", for: indexPath)
-            let cellImage = cell.contentView.viewWithTag(3) as! UIImageView
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath) as! voidCollectionViewCell
+            let cellImage = cell.contentView.viewWithTag(0) as! UIImageView
             cellImage.image =  #imageLiteral(resourceName: "Rectangle")
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
-            cell.layer.masksToBounds = true
        
              return cell
         }

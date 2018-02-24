@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--My Selfies-->
         <scene sceneID="LIC-d1-1KP">
@@ -446,9 +451,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevronArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="4qT-fk-CB0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevronArrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="4qT-fk-CB0">
                                 <rect key="frame" x="172" y="544" width="30" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-mb-bFz">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -473,11 +477,40 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0e-qQ-GrC">
+                                <rect key="frame" x="16" y="466" width="343" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="0.39530149647887325" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="9Nm-cA-dug"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLw-yr-9xi">
+                                <rect key="frame" x="303" y="84" width="56" height="52"/>
+                                <color key="backgroundColor" red="0.99683946371078491" green="0.99205619096755981" blue="0.99196141958236694" alpha="0.40203617125984253" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lLw-yr-9xi" secondAttribute="height" multiplier="14:13" id="1We-6o-dWE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="g0e-qQ-GrC" firstAttribute="leading" secondItem="QHE-uB-hOG" secondAttribute="leading" constant="16" id="0qH-to-jEf"/>
+                            <constraint firstItem="lLw-yr-9xi" firstAttribute="top" secondItem="QHE-uB-hOG" secondAttribute="top" constant="20" id="4VQ-TZ-Wa9"/>
                             <constraint firstItem="E2e-mb-bFz" firstAttribute="leading" secondItem="RIu-xe-tvk" secondAttribute="leading" id="893-tD-fy1"/>
+                            <constraint firstItem="lLw-yr-9xi" firstAttribute="leading" secondItem="QHE-uB-hOG" secondAttribute="leading" constant="303" id="Ahq-XK-vB4"/>
                             <constraint firstAttribute="bottom" secondItem="E2e-mb-bFz" secondAttribute="bottom" id="DdQ-W9-GgJ"/>
+                            <constraint firstItem="QHE-uB-hOG" firstAttribute="trailing" secondItem="4qT-fk-CB0" secondAttribute="trailing" constant="173" id="VfV-a6-Tt7"/>
+                            <constraint firstItem="4qT-fk-CB0" firstAttribute="leading" secondItem="QHE-uB-hOG" secondAttribute="leading" constant="172" id="Wgd-Ro-Oz4"/>
+                            <constraint firstItem="4qT-fk-CB0" firstAttribute="top" secondItem="g0e-qQ-GrC" secondAttribute="bottom" constant="8" id="dQo-cN-x4k"/>
+                            <constraint firstItem="QHE-uB-hOG" firstAttribute="bottom" secondItem="4qT-fk-CB0" secondAttribute="bottom" constant="53" id="gWA-A2-Q5i"/>
+                            <constraint firstItem="QHE-uB-hOG" firstAttribute="trailing" secondItem="g0e-qQ-GrC" secondAttribute="trailing" constant="16" id="gil-DR-jXw"/>
+                            <constraint firstItem="QHE-uB-hOG" firstAttribute="trailing" secondItem="lLw-yr-9xi" secondAttribute="trailing" constant="16" id="puj-Lp-lh9"/>
                             <constraint firstAttribute="trailing" secondItem="E2e-mb-bFz" secondAttribute="trailing" id="zsj-D2-iEf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QHE-uB-hOG"/>
@@ -490,9 +523,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionLabel" destination="g0e-qQ-GrC" id="vZc-2i-McW"/>
                         <outlet property="myPhotoCollectionView" destination="5nJ-mA-5eh" id="y1J-dM-B2S"/>
                         <outlet property="mySessionCollectionView" destination="LEG-nB-7LE" id="edx-oq-bU3"/>
                         <outlet property="photo" destination="LEG-nB-7LE" id="4ob-N9-Fwg"/>
+                        <outlet property="scoreLabel" destination="lLw-yr-9xi" id="wPU-oU-atZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmZ-PN-1mg" userLabel="First Responder" sceneMemberID="firstResponder"/>

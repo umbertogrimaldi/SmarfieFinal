@@ -15,6 +15,8 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     var imageArray: [UIImage] = [#imageLiteral(resourceName: "image1"), #imageLiteral(resourceName: "image2"), #imageLiteral(resourceName: "image3"), #imageLiteral(resourceName: "image4"), #imageLiteral(resourceName: "image5"), #imageLiteral(resourceName: "image6"), #imageLiteral(resourceName: "image7"), #imageLiteral(resourceName: "image8"), #imageLiteral(resourceName: "image9"), #imageLiteral(resourceName: "image10"), #imageLiteral(resourceName: "image11"), #imageLiteral(resourceName: "image12"), #imageLiteral(resourceName: "image13"), #imageLiteral(resourceName: "image14"), #imageLiteral(resourceName: "image15"), #imageLiteral(resourceName: "image16")]
     let voidLayout = UICollectionViewFlowLayout()
     let layout = UICollectionViewFlowLayout()
+    
+    
     @IBOutlet open weak var selfiesCollection: UICollectionView!
     
     @IBOutlet weak var placeholder: UIImageView!
@@ -65,16 +67,15 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
             cell.layer.cornerRadius = 5
-//            collectionView.collectionViewLayout = layout
+
             let cellImage = cell.viewWithTag(2) as! UIImageView
             cellImage.image = PhotoShared.shared.favourites[indexPath.row]
             return cell
             
         }else{
     
-//            collectionView.collectionViewLayout = voidLayout
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidSecondCell", for: indexPath)
-            let cellImage = cell.viewWithTag(4) as! UIImageView
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath)
+            let cellImage = cell.viewWithTag(0) as! UIImageView
             cellImage.image =  #imageLiteral(resourceName: "Rectangle")
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
