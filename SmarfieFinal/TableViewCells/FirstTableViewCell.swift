@@ -68,6 +68,10 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         }
     }
     
+    
+   
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // fetch delle immagini da coredata
@@ -81,7 +85,8 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
             let cellImage = cell.viewWithTag(1) as! UIImageView
-            if let _ = PhotoShared.shared.setOfBest{ cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]}
+//            cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]
+            cellImage.image =  UIImage(data: best[indexPath.row].image! as Data)
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor

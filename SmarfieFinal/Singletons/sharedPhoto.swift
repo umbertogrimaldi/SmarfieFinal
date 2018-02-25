@@ -41,7 +41,7 @@ class PhotoShared{
     let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
     var best = [BestPhotos]()
     
-    
+    var bestSelf = [UIImage]()
     
     
     var myPhotoSession: [PhotoScore]?
