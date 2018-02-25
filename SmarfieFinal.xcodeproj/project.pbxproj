@@ -135,10 +135,10 @@
 		8348C39F203DBCB70009FD5B /* SmarfieFinal */ = {
 			isa = PBXGroup;
 			children = (
-				19337FB52041DDBE0073E971 /* View */,
 				8348C3A0203DBCB70009FD5B /* AppDelegate.swift */,
 				8348C3C8203DBDA50009FD5B /* Main.storyboard */,
 				8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */,
+				19337FB52041DDBE0073E971 /* View */,
 				19337FB32041DD5E0073E971 /* Core Data */,
 				19337FB42041DD860073E971 /* Controller */,
 				8348C3B8203DBD610009FD5B /* PreviewController */,

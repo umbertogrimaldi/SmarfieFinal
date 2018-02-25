@@ -99,7 +99,7 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
         if indexPath.section == 0 {
             return 233
         } else {
-            return tableView.contentSize.height
+            return tableView.contentSize.height + 60
         }
     }
     

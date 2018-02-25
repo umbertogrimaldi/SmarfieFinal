@@ -48,28 +48,8 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="center" reuseIdentifier="voidFirstCell" id="yZQ-X8-LyF">
-                                                            <rect key="frame" x="0.0" y="6.5" width="375" height="220"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TA1-C6-4il">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                            </view>
-                                                            <constraints>
-                                                                <constraint firstItem="TA1-C6-4il" firstAttribute="top" secondItem="yZQ-X8-LyF" secondAttribute="top" id="59b-CJ-XWh"/>
-                                                                <constraint firstAttribute="trailing" secondItem="TA1-C6-4il" secondAttribute="trailing" id="7WD-SK-077"/>
-                                                                <constraint firstAttribute="bottom" secondItem="TA1-C6-4il" secondAttribute="bottom" id="FOz-bT-9id"/>
-                                                                <constraint firstItem="TA1-C6-4il" firstAttribute="leading" secondItem="yZQ-X8-LyF" secondAttribute="leading" id="l8m-bt-kJT"/>
-                                                            </constraints>
-                                                            <size key="customSize" width="375" height="220"/>
-                                                        </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myCell" id="Llx-G4-g6B">
-                                                            <rect key="frame" x="385" y="6.5" width="230" height="220"/>
+                                                            <rect key="frame" x="0.0" y="6.5" width="230" height="220"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="230" height="220"/>
@@ -128,7 +108,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myCell" id="oIl-zz-TEN">
-                                                            <rect key="frame" x="137.5" y="0.0" width="100" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -148,21 +128,6 @@
                                                                 <constraint firstItem="mTE-an-hIY" firstAttribute="top" secondItem="oIl-zz-TEN" secondAttribute="top" id="iEr-f0-aRY"/>
                                                                 <constraint firstAttribute="bottom" secondItem="mTE-an-hIY" secondAttribute="bottom" id="rFu-MM-11z"/>
                                                             </constraints>
-                                                        </collectionViewCell>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="voidSecondCell" id="fOz-Vm-UsQ">
-                                                            <rect key="frame" x="0.0" y="110" width="375" height="233"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmf-S7-2bH">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                            </view>
-                                                            <size key="customSize" width="375" height="233"/>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>

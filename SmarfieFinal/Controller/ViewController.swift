@@ -56,6 +56,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        motionManager.startDeviceMotionUpdates(using: .xMagneticNorthZVertical)
         setupCaptureSession()
         setupDevice()
         setupInputOutput()
@@ -64,7 +65,6 @@ class ViewController: UIViewController {
         takePhotoButton.layer.borderWidth = 6
         takePhotoButton.layer.borderColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0).cgColor
         takePhotoButton.layer.cornerRadius = 37.5
-        motionManager.startDeviceMotionUpdates(using: .xMagneticNorthZVertical)
         counterView.layer.cornerRadius = 5
         counterView.layer.opacity = 30
         counterView.layer.borderWidth = 1
