@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import CoreData
+import CoreData
 
 class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     var sourceController: UIViewController?
@@ -17,8 +17,8 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var placeholder: UIImageView!
     
     
-//    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
-//    var best = [BestPhotos]()
+    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
+    var best = [BestPhotos]()
     
     
     //      MARK:- COLLECTIONVIEW LAYOUT
@@ -67,24 +67,30 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         }
     }
     
+    
+   
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        print (PhotoShared.shared.bestPhotos.count)
         
         
         // fetch delle immagini da coredata
-//        do{
-//        let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
-//        self.best = bestSelfie
-//        }catch {}
+        do{
+        let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
+        self.best = bestSelfie
+        }catch {}
         
         // ovviamente restituisce solo se sta qualcosa in setOfBest e quindi va cambiato
         // conviene fare un didload o didAppear ?, aggiornare da coredata l'array e fare il controllo
         
-        if let _ = PhotoShared.shared.setOfBest{
+//        if let _ = PhotoShared.shared.setOfBest{
+        if best.count > 0 {
              print("in if")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
             let cellImage = cell.viewWithTag(1) as! UIImageView
-            cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]
+//            cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]
+            cellImage.image =  UIImage(data: best[indexPath.row].image! as Data)
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor

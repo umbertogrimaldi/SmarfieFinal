@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class PreviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    let dataPersistanceManager = DataPersistanceManager.shared
+  //  let dataPersistanceManager = DataPersistanceManager.shared
     
     @IBOutlet weak var scoreLabel: UILabel!{
         didSet{
@@ -82,6 +83,14 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
             guard let _ = lhs.score, let  _ = rhs.score else{return false}
             return lhs.score! > rhs.score!
             })
+        
+        
+        let best = BestPhotos(context: PersistenceService.context)
+        let imgData = UIImagePNGRepresentation((PhotoShared.shared.myPhotoSession?.first?.image)!)! as NSData
+        best.image = imgData
+        PersistenceService.saveContext()
+        
+        
 
              self.myPhotoCollectionView.reloadData()
     }
