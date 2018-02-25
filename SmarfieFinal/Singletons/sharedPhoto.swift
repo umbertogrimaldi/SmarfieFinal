@@ -82,8 +82,8 @@ class PhotoShared{
     var favourites:[UIImage]{
         get{
             var images:[UIImage] = []
-            if let _ = setOfBest{
-                for x in setOfBest!{
+            if let _ = setOfFavourites{
+                for x in setOfFavourites!{
                     images.append(x)
                 }
                 return images

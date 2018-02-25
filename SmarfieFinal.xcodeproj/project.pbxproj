@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		191F40E2203DC61800380050 /* PhotoClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F40E1203DC61800380050 /* PhotoClassifier.swift */; };
 		191F40E4203DC66A00380050 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F40E3203DC66A00380050 /* MotionManager.swift */; };
-		196CBB2B2040790800E91245 /* DataPersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196CBB2A2040790800E91245 /* DataPersistanceManager.swift */; };
+		19337FB72041DDE40073E971 /* VoidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19337FB62041DDE40073E971 /* VoidView.swift */; };
 		196CBB302040F40E00E91245 /* voidCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196CBB2E2040F40E00E91245 /* voidCollectionViewCell.swift */; };
 		196CBB312040F40E00E91245 /* voidCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196CBB2F2040F40E00E91245 /* voidCollectionViewCell.xib */; };
 		8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3A0203DBCB70009FD5B /* AppDelegate.swift */; };
@@ -34,7 +34,7 @@
 /* Begin PBXFileReference section */
 		191F40E1203DC61800380050 /* PhotoClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoClassifier.swift; sourceTree = "<group>"; };
 		191F40E3203DC66A00380050 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		196CBB2A2040790800E91245 /* DataPersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistanceManager.swift; sourceTree = "<group>"; };
+		19337FB62041DDE40073E971 /* VoidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidView.swift; sourceTree = "<group>"; };
 		196CBB2E2040F40E00E91245 /* voidCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voidCollectionViewCell.swift; sourceTree = "<group>"; };
 		196CBB2F2040F40E00E91245 /* voidCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = voidCollectionViewCell.xib; sourceTree = "<group>"; };
 		8348C39D203DBCB70009FD5B /* SmarfieFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmarfieFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +69,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19337FB22041DD3C0073E971 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				B9B30A8B2041A30200E3C0B2 /* PersistenceService.swift */,
+				8348C3BD203DBD6B0009FD5B /* sharedPhoto.swift */,
+				191F40E3203DC66A00380050 /* MotionManager.swift */,
+				8348C3C4203DBD7C0009FD5B /* User.swift */,
+			);
+			path = Singletons;
+			sourceTree = "<group>";
+		};
+		19337FB32041DD5E0073E971 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				B9B30A8D2041A30200E3C0B2 /* SmarfieFinal.xcdatamodeld */,
+				B9B30A8A2041A30100E3C0B2 /* BestPhotos+CoreDataClass.swift */,
+				B9B30A8C2041A30200E3C0B2 /* BestPhotos+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		19337FB42041DD860073E971 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8348C3C6203DBD980009FD5B /* ViewController.swift */,
+				8348C3B2203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift */,
+				8348C3B4203DBD420009FD5B /* MySelfiesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		19337FB52041DDBE0073E971 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				19337FB62041DDE40073E971 /* VoidView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		196CBB2D2040F28D00E91245 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,24 +135,16 @@
 		8348C39F203DBCB70009FD5B /* SmarfieFinal */ = {
 			isa = PBXGroup;
 			children = (
-				B9B30A8A2041A30100E3C0B2 /* BestPhotos+CoreDataClass.swift */,
-				B9B30A8C2041A30200E3C0B2 /* BestPhotos+CoreDataProperties.swift */,
-				B9B30A8B2041A30200E3C0B2 /* PersistenceService.swift */,
-				B9B30A8D2041A30200E3C0B2 /* SmarfieFinal.xcdatamodeld */,
-				B9B30A892041A2EE00E3C0B2 /* Model */,
+				19337FB52041DDBE0073E971 /* View */,
 				8348C3A0203DBCB70009FD5B /* AppDelegate.swift */,
-				196CBB2A2040790800E91245 /* DataPersistanceManager.swift */,
-				8348C3C6203DBD980009FD5B /* ViewController.swift */,
-				8348C3B2203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift */,
-				8348C3B4203DBD420009FD5B /* MySelfiesViewController.swift */,
-				8348C3B8203DBD610009FD5B /* PreviewController */,
-				8348C3BD203DBD6B0009FD5B /* sharedPhoto.swift */,
-				191F40E3203DC66A00380050 /* MotionManager.swift */,
-				8348C3C4203DBD7C0009FD5B /* User.swift */,
-				8348C3BF203DBD720009FD5B /* TableViewCells */,
 				8348C3C8203DBDA50009FD5B /* Main.storyboard */,
-				8348C3A7203DBCB70009FD5B /* Assets.xcassets */,
 				8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */,
+				19337FB32041DD5E0073E971 /* Core Data */,
+				19337FB42041DD860073E971 /* Controller */,
+				8348C3B8203DBD610009FD5B /* PreviewController */,
+				19337FB22041DD3C0073E971 /* Singletons */,
+				8348C3BF203DBD720009FD5B /* TableViewCells */,
+				8348C3A7203DBCB70009FD5B /* Assets.xcassets */,
 				8348C3AC203DBCB70009FD5B /* Info.plist */,
 			);
 			path = SmarfieFinal;
@@ -138,14 +169,6 @@
 				8348C3C1203DBD720009FD5B /* FirstTableViewCell.swift */,
 			);
 			path = TableViewCells;
-			sourceTree = "<group>";
-		};
-		B9B30A892041A2EE00E3C0B2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,12 +249,12 @@
 				8348C3B5203DBD420009FD5B /* MySelfiesViewController.swift in Sources */,
 				8348C3C2203DBD720009FD5B /* TableViewCell.swift in Sources */,
 				8348C3BC203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift in Sources */,
-				196CBB2B2040790800E91245 /* DataPersistanceManager.swift in Sources */,
 				8348C3C7203DBD990009FD5B /* ViewController.swift in Sources */,
 				8348C3BE203DBD6B0009FD5B /* sharedPhoto.swift in Sources */,
 				196CBB302040F40E00E91245 /* voidCollectionViewCell.swift in Sources */,
 				8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */,
 				B9B30A902041A30200E3C0B2 /* PersistenceService.swift in Sources */,
+				19337FB72041DDE40073E971 /* VoidView.swift in Sources */,
 				191F40E4203DC66A00380050 /* MotionManager.swift in Sources */,
 				8348C3B3203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift in Sources */,
 				8348C3BB203DBD610009FD5B /* PreviewViewController.swift in Sources */,

@@ -32,6 +32,7 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
 //     MARK: - COLLECTIONVIEW DELEGATE AND DATASOURCE
         selfiesCollection.delegate = self
         selfiesCollection.dataSource = self
+//        selfiesCollection.register(UINib(nibName:"voidCollectionViewCell",bundle: nil), forCellWithReuseIdentifier: "voidCollectionViewCell")
         
 
         
@@ -72,8 +73,6 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        print (PhotoShared.shared.bestPhotos.count)
-        
         
         // fetch delle immagini da coredata
         do{
@@ -95,18 +94,19 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
              return cell
-        }else{
-            print("in else")
+//        }else{
+//            print("in else")
 //            collectionView.collectionViewLayout = self.voidLayout
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath) as! voidCollectionViewCell
-            let cellImage = cell.contentView.viewWithTag(0) as! UIImageView
-            cellImage.image =  #imageLiteral(resourceName: "Rectangle")
-            cell.layer.cornerRadius = 5
-            cell.layer.borderWidth = 0.1
-            cell.layer.borderColor = UIColor.gray.cgColor
-       
-             return cell
-        }
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath) // as! voidCollectionViewCell
+//            let cellImage = cell.contentView.viewWithTag(0) as! UIImageView
+//            cellImage.image =  #imageLiteral(resourceName: "Rectangle")
+//            cell.photo.image = #imageLiteral(resourceName: "Rectangle")
+//            cell.layer.cornerRadius = 5
+//            cell.layer.borderWidth = 0.1
+//            cell.layer.borderColor = UIColor.gray.cgColor
+//
+//            return cell
+//        }
        
     }
     

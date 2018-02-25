@@ -16,6 +16,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         didSet{
             scoreLabel.layer.cornerRadius = 5
             scoreLabel.layer.borderWidth = 0.1
+            scoreLabel.layer.masksToBounds = true
         }
     }
     
@@ -23,6 +24,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         didSet{
             descriptionLabel.layer.cornerRadius = 5
             descriptionLabel.layer.borderWidth = 0.1
+            descriptionLabel.layer.masksToBounds = true
         }
     }
     
@@ -66,7 +68,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(PhotoShared.shared.myPhotoSession!.count)
+     
         myPhotoCollectionView.delegate = self
         myPhotoCollectionView.dataSource = self
         navigationController?.delegate = self
@@ -187,10 +189,10 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
             descriptionLabel.text = info
             }
             if let score = PhotoShared.shared.myPhotoSession![index.row].score{
-                scoreLabel.text = "\(Int(score))%"
-                if score < 40{
+                scoreLabel.text = "\(Int(score*100))%"
+                if score < 0.40{
                     scoreLabel.textColor = .red
-                }else if score < 60{
+                }else if score < 0.60{
                     scoreLabel.textColor = .yellow
                 }else{
                     scoreLabel.textColor = .green
