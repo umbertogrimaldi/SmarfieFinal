@@ -83,13 +83,13 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         // ovviamente restituisce solo se sta qualcosa in setOfBest e quindi va cambiato
         // conviene fare un didload o didAppear ?, aggiornare da coredata l'array e fare il controllo
         
-//        if let _ = PhotoShared.shared.setOfBest{
-        if best.count > 0 {
+        if let _ = PhotoShared.shared.setOfBest{
+        //if best.count > 0 {
              print("in if")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
             let cellImage = cell.viewWithTag(1) as! UIImageView
-//            cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]
-            cellImage.image =  UIImage(data: best[indexPath.row].image! as Data)
+            cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]
+            //cellImage.image =  UIImage(data: best[indexPath.row].image! as Data)
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
@@ -99,7 +99,7 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
             collectionView.collectionViewLayout = self.voidLayout
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath) // as! voidCollectionViewCell
             let cellImage = cell.contentView.viewWithTag(0) as! UIImageView
-//            cellImage.image =  #imageLiteral(resourceName: "Rectangle")
+            cellImage.image =  #imageLiteral(resourceName: "Rectangle")
 //            cell.photo.image = #imageLiteral(resourceName: "Rectangle")
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
