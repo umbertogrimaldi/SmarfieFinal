@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import CoreData
+import CoreData
 
 class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     var sourceController: UIViewController?
@@ -17,8 +17,8 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var placeholder: UIImageView!
     
     
-//    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
-//    var best = [BestPhotos]()
+    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
+    var best = [BestPhotos]()
     
     
     //      MARK:- COLLECTIONVIEW LAYOUT
@@ -71,36 +71,21 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // fetch delle immagini da coredata
-//        do{
-//        let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
-//        self.best = bestSelfie
-//        }catch {}
+        do{
+        let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
+        self.best = bestSelfie
+        }catch {}
         
         // ovviamente restituisce solo se sta qualcosa in setOfBest e quindi va cambiato
         // conviene fare un didload o didAppear ?, aggiornare da coredata l'array e fare il controllo
         
-//        if let _ = PhotoShared.shared.setOfBest{
-             print("in if")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
             let cellImage = cell.viewWithTag(1) as! UIImageView
             if let _ = PhotoShared.shared.setOfBest{ cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]}
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
-             return cell
-//        }else{
-//            print("in else")
-//            collectionView.collectionViewLayout = self.voidLayout
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath) // as! voidCollectionViewCell
-//            let cellImage = cell.contentView.viewWithTag(0) as! UIImageView
-//            cellImage.image =  #imageLiteral(resourceName: "Rectangle")
-//            cell.photo.image = #imageLiteral(resourceName: "Rectangle")
-//            cell.layer.cornerRadius = 5
-//            cell.layer.borderWidth = 0.1
-//            cell.layer.borderColor = UIColor.gray.cgColor
-//
-//            return cell
-//        }
+            return cell
        
     }
     

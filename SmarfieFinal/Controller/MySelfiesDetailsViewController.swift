@@ -23,7 +23,7 @@ class MySelfiesDetailsViewController: UIViewController {
         photoImage.image = photo
         navigationController?.delegate = self
         tabBarController?.tabBar.isHidden = true
-        navigationController?.navigationBar.topItem?.title = "Collection"
+        navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0)]
         navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(backTapped))
     }
@@ -43,18 +43,26 @@ class MySelfiesDetailsViewController: UIViewController {
     //    MARK:- SETUP THE TOOLBAR DELETE BUTTON
     @IBAction func toolbarDeleteTapped(_ sender: Any) {
     
-    let alertController = UIAlertController(title: "Delete", message: "Do you want to delete the collection?", preferredStyle: .actionSheet)
+    let alertController = UIAlertController(title: "Delete", message: "Do you want to delete this photo?", preferredStyle: .actionSheet)
         
         let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
             if self.photoType! == .favourite{
-                guard let _ = PhotoShared.shared.setOfFavourites else {return}
-                if let index = PhotoShared.shared.setOfFavourites!.index(of:self.photo!){
+                guard let favs = PhotoShared.shared.setOfFavourites else {return}
+                if let index = favs.index(of:self.photo!){
                     PhotoShared.shared.setOfFavourites!.remove(at:index)
+                    print(favs.count)
+                    if favs.count == 1 {PhotoShared.shared.setOfFavourites = nil}
+                    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue:"ReloadCollectionViews"), object: nil))
+                    self.dismiss(animated: true, completion: nil)
                 }
             }else {
-                guard let _ = PhotoShared.shared.setOfBest else {return}
-                if let index = PhotoShared.shared.setOfBest!.index(of:self.photo!){
+                guard let bests = PhotoShared.shared.setOfBest else {return}
+                if let index = bests.index(of:self.photo!){
                     PhotoShared.shared.setOfBest!.remove(at:index)
+                    print("aaaaaaaaaa",bests.count)
+                    if bests.count == 1 {PhotoShared.shared.setOfBest = nil}
+                    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue:"ReloadCollectionViews"), object: nil))
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         })

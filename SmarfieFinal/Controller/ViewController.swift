@@ -69,14 +69,18 @@ class ViewController: UIViewController {
         counterView.layer.opacity = 30
         counterView.layer.borderWidth = 1
         counterView.layer.borderColor = UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0).cgColor
-       
+        rectButton.setTitleColor(UIColor(red:0.17, green:0.67, blue:0.71, alpha:1.0), for: .normal)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         navigationController?.navigationBar.isHidden = true
-        photoCounter.text = "\(0)"
+        if let photos = PhotoShared.shared.myPhotoSession{
+            photoCounter.text = "\(photos.count)"
+        }else{
+            photoCounter.text = "\(0)"
+        }
     }
     
     

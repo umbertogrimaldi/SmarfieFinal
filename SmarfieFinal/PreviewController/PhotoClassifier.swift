@@ -70,13 +70,14 @@ let faces = faceDetector?.features(in:newImage, options: options)
         faceScore = 0.0
         score = 0.0
         var photoInfo = "Hint: "
+        goodPhotoInfo = "Wow! "
         
         let brightness = image.image.brightness
         
         let faces = self.detectFaces(image: image.image)
         
         guard faces.count > 0 else {return (0,"No face found")}
-        guard image.gravity > -0.45 else {return (0,photoInfo+"try to raise the camera up")}
+        guard image.gravity > -0.45 else {return (0.1,photoInfo+"try to raise the camera up")}
         
         
             
@@ -98,7 +99,7 @@ let faces = faceDetector?.features(in:newImage, options: options)
                     faceScore += 1.0
                     goodPhotoInfo += "What a great smile!"
                 }else {
-                    photoInfo += "Come on dude, smile! life is beautiful and you're too\n"
+                    photoInfo += "Come on dude, smile!\n"
                     perfect = false
                 }
                 
@@ -137,14 +138,14 @@ let faces = faceDetector?.features(in:newImage, options: options)
             
               faceScore = faceScore/Double(faces.count)
             
-            if brightness > 34 || brightness < 227 {
+            if brightness > 34 && brightness < 227 {
                 bscore = (brightness - 131) / 96
                 bscore = 1 - bscore
             }else if brightness < 34{
                 photoInfo += "you're in a dark place, try to increase brightness\n"
                 perfect = false
             }else if brightness > 227{
-                photoInfo += "your too bright man, stop shining or get in a darker place \n "
+                photoInfo += "you're too bright man, stop shining or get in a darker place \n "
                 perfect = false
             }
             
@@ -176,6 +177,7 @@ let faces = faceDetector?.features(in:newImage, options: options)
         if faces.count >= 3{
             photoInfo = "You're too much guys, I can't give you any hint but i'm pretty shure you're really really beautiful"
         }
+        
         
         return (totalScore,photoInfo)
     }

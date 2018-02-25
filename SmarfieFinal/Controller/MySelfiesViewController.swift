@@ -36,15 +36,24 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     @objc func reloadData(_ sender: Notification){
-        print("reloading...")
+   
+        if let _ = PhotoShared.shared.setOfBest {
+            emptyView.removeFromSuperview()
+        }else if let _ = PhotoShared.shared.setOfFavourites{
+            emptyView.removeFromSuperview()
+        }else{
+            self.view.addSubview(emptyView)
+            view.bringSubview(toFront: emptyView)
+        }
+        self.tabBarController?.tabBar.isHidden = false
         tableView.reloadData()
     }
   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         view.bringSubview(toFront: emptyView)
-        emptyView.bringSubview(toFront: view)
         if let _ = PhotoShared.shared.setOfBest {
               emptyView.removeFromSuperview()
         }else if let _ = PhotoShared.shared.setOfFavourites{
