@@ -94,19 +94,19 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
              return cell
-//        }else{
-//            print("in else")
-//            collectionView.collectionViewLayout = self.voidLayout
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath) // as! voidCollectionViewCell
-//            let cellImage = cell.contentView.viewWithTag(0) as! UIImageView
+        }else{
+            print("in else")
+            collectionView.collectionViewLayout = self.voidLayout
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voidCollectionViewCell", for: indexPath) // as! voidCollectionViewCell
+            let cellImage = cell.contentView.viewWithTag(0) as! UIImageView
 //            cellImage.image =  #imageLiteral(resourceName: "Rectangle")
 //            cell.photo.image = #imageLiteral(resourceName: "Rectangle")
-//            cell.layer.cornerRadius = 5
-//            cell.layer.borderWidth = 0.1
-//            cell.layer.borderColor = UIColor.gray.cgColor
-//
-//            return cell
-//        }
+            cell.layer.cornerRadius = 5
+            cell.layer.borderWidth = 0.1
+            cell.layer.borderColor = UIColor.gray.cgColor
+
+            return cell
+        }
        
     }
     
