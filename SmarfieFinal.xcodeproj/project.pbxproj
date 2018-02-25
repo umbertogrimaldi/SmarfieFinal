@@ -12,6 +12,10 @@
 		19337FB72041DDE40073E971 /* VoidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19337FB62041DDE40073E971 /* VoidView.swift */; };
 		196CBB302040F40E00E91245 /* voidCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196CBB2E2040F40E00E91245 /* voidCollectionViewCell.swift */; };
 		196CBB312040F40E00E91245 /* voidCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196CBB2F2040F40E00E91245 /* voidCollectionViewCell.xib */; };
+		199594612042F3800020F8D8 /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199594602042F3800020F8D8 /* OnBoarding.storyboard */; };
+		199594662042FCF70020F8D8 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199594652042FCF70020F8D8 /* PageViewController.swift */; };
+		19959468204302750020F8D8 /* onBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19959467204302750020F8D8 /* onBoardingViewController.swift */; };
+		1995946A204318650020F8D8 /* BestSideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19959469204318650020F8D8 /* BestSideViewController.swift */; };
 		8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3A0203DBCB70009FD5B /* AppDelegate.swift */; };
 		8348C3A8203DBCB70009FD5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A7203DBCB70009FD5B /* Assets.xcassets */; };
 		8348C3AB203DBCB70009FD5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */; };
@@ -37,6 +41,10 @@
 		19337FB62041DDE40073E971 /* VoidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidView.swift; sourceTree = "<group>"; };
 		196CBB2E2040F40E00E91245 /* voidCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voidCollectionViewCell.swift; sourceTree = "<group>"; };
 		196CBB2F2040F40E00E91245 /* voidCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = voidCollectionViewCell.xib; sourceTree = "<group>"; };
+		199594602042F3800020F8D8 /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
+		199594652042FCF70020F8D8 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		19959467204302750020F8D8 /* onBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingViewController.swift; sourceTree = "<group>"; };
+		19959469204318650020F8D8 /* BestSideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSideViewController.swift; sourceTree = "<group>"; };
 		8348C39D203DBCB70009FD5B /* SmarfieFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmarfieFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8348C3A0203DBCB70009FD5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8348C3A7203DBCB70009FD5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +123,16 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		199594642042F6F30020F8D8 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				199594602042F3800020F8D8 /* OnBoarding.storyboard */,
+				19959467204302750020F8D8 /* onBoardingViewController.swift */,
+				199594652042FCF70020F8D8 /* PageViewController.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
 		8348C394203DBCB70009FD5B = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +153,10 @@
 		8348C39F203DBCB70009FD5B /* SmarfieFinal */ = {
 			isa = PBXGroup;
 			children = (
+				199594642042F6F30020F8D8 /* OnBoarding */,
 				8348C3A0203DBCB70009FD5B /* AppDelegate.swift */,
 				8348C3C8203DBDA50009FD5B /* Main.storyboard */,
+				19959469204318650020F8D8 /* BestSideViewController.swift */,
 				8348C3A9203DBCB70009FD5B /* LaunchScreen.storyboard */,
 				19337FB52041DDBE0073E971 /* View */,
 				19337FB32041DD5E0073E971 /* Core Data */,
@@ -234,6 +254,7 @@
 				8348C3C9203DBDA50009FD5B /* Main.storyboard in Resources */,
 				8348C3AB203DBCB70009FD5B /* LaunchScreen.storyboard in Resources */,
 				8348C3A8203DBCB70009FD5B /* Assets.xcassets in Resources */,
+				199594612042F3800020F8D8 /* OnBoarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,11 +276,14 @@
 				8348C3A1203DBCB70009FD5B /* AppDelegate.swift in Sources */,
 				B9B30A902041A30200E3C0B2 /* PersistenceService.swift in Sources */,
 				19337FB72041DDE40073E971 /* VoidView.swift in Sources */,
+				19959468204302750020F8D8 /* onBoardingViewController.swift in Sources */,
 				191F40E4203DC66A00380050 /* MotionManager.swift in Sources */,
 				8348C3B3203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift in Sources */,
 				8348C3BB203DBD610009FD5B /* PreviewViewController.swift in Sources */,
+				199594662042FCF70020F8D8 /* PageViewController.swift in Sources */,
 				B9B30A912041A30200E3C0B2 /* BestPhotos+CoreDataProperties.swift in Sources */,
 				191F40E2203DC61800380050 /* PhotoClassifier.swift in Sources */,
+				1995946A204318650020F8D8 /* BestSideViewController.swift in Sources */,
 				B9B30A8F2041A30200E3C0B2 /* BestPhotos+CoreDataClass.swift in Sources */,
 				8348C3C5203DBD7C0009FD5B /* User.swift in Sources */,
 			);
@@ -391,7 +415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N6AW68PRVM;
+				DEVELOPMENT_TEAM = D4L4S7MAUX;
 				INFOPLIST_FILE = SmarfieFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecorp.SmarfieFinal;
@@ -406,7 +430,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N6AW68PRVM;
+				DEVELOPMENT_TEAM = D4L4S7MAUX;
 				INFOPLIST_FILE = SmarfieFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecorp.SmarfieFinal;
