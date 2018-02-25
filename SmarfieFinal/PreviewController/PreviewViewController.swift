@@ -86,13 +86,12 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
             return lhs.score! > rhs.score!
             })
         
-        
-        let best = BestPhotos(context: PersistenceService.context)
-        let imgData = UIImagePNGRepresentation((PhotoShared.shared.myPhotoSession?.first?.image)!)! as NSData
-        best.image = imgData
-        PersistenceService.saveContext()
-        
-        
+//
+//        let best = BestPhotos(context: PersistenceService.context)
+//        let imgData = UIImagePNGRepresentation((PhotoShared.shared.myPhotoSession?.first?.image)!)! as NSData
+//        best.image = imgData
+//        PersistenceService.saveContext()
+
 
              self.myPhotoCollectionView.reloadData()
     }
