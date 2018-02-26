@@ -84,9 +84,9 @@ let faces = faceDetector?.features(in:newImage, options: options)
                 self.smile = face.hasSmile
                 self.shutEyes = !face.leftEyeClosed && !face.rightEyeClosed
                 
-                if face.faceAngle > -15 || face.faceAngle < 15 {
+                if face.faceAngle > -15 && face.faceAngle < 15 {
                     self.faceAngleScore = abs(Double(face.faceAngle) / 15)
-                    self.faceAngleScore = 1 - self.faceAngleScore
+                    
                     faceScore += self.faceAngleScore
                     
                 }else{
@@ -137,9 +137,9 @@ let faces = faceDetector?.features(in:newImage, options: options)
             
               faceScore = faceScore/Double(faces.count)
             
-            if brightness > 34 || brightness < 227 {
+            if brightness > 34 && brightness < 227 {
                 bscore = (brightness - 131) / 96
-                bscore = 1 - bscore
+               
             }else if brightness < 34{
                 photoInfo += "you're in a dark place, try to increase brightness\n"
                 perfect = false

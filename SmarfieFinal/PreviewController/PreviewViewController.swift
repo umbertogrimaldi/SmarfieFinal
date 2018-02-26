@@ -88,9 +88,14 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         
         let best = BestPhotos(context: PersistenceService.context)
-        let imgData = UIImagePNGRepresentation((PhotoShared.shared.myPhotoSession?.first?.image)!)! as NSData
+        let imgPng = PhotoShared.shared.myPhotoSession?.first?.image.fixOrientation()
+        //let imgData = UIImagePNGRepresentation((PhotoShared.shared.myPhotoSession?.first?.image.fixOrientation())!)! as NSData
+        let imgData = UIImagePNGRepresentation(imgPng!)! as NSData
+        
         best.image = imgData
         PersistenceService.saveContext()
+        
+        BestSelfie.shared.updateBest()
         
         
 
@@ -100,8 +105,8 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        tabBarController?.tabBar.isHidden = true
-        navigationController?.navigationBar.isHidden = true
+//        tabBarController?.tabBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
     }
     
     
@@ -226,4 +231,22 @@ extension PreviewViewController: UINavigationControllerDelegate {
         }
     }
 }
+
+extension UIImage {
+    func fixOrientation() -> UIImage {
+        if self.imageOrientation == UIImageOrientation.up {
+            return self
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        if let normalizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            return normalizedImage
+        } else {
+            return self
+        }
+    }
+}
+
 

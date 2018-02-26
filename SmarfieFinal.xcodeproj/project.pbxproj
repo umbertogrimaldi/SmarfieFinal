@@ -25,10 +25,13 @@
 		8348C3C5203DBD7C0009FD5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3C4203DBD7C0009FD5B /* User.swift */; };
 		8348C3C7203DBD990009FD5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348C3C6203DBD980009FD5B /* ViewController.swift */; };
 		8348C3C9203DBDA50009FD5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8348C3C8203DBDA50009FD5B /* Main.storyboard */; };
+		B96302DF20443C2F0053E486 /* FavouritesPhotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96302DD20443C2F0053E486 /* FavouritesPhotos+CoreDataClass.swift */; };
+		B96302E020443C2F0053E486 /* FavouritesPhotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96302DE20443C2F0053E486 /* FavouritesPhotos+CoreDataProperties.swift */; };
 		B9B30A8F2041A30200E3C0B2 /* BestPhotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B30A8A2041A30100E3C0B2 /* BestPhotos+CoreDataClass.swift */; };
 		B9B30A902041A30200E3C0B2 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B30A8B2041A30200E3C0B2 /* PersistenceService.swift */; };
 		B9B30A912041A30200E3C0B2 /* BestPhotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B30A8C2041A30200E3C0B2 /* BestPhotos+CoreDataProperties.swift */; };
 		B9B30A922041A30200E3C0B2 /* SmarfieFinal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B9B30A8D2041A30200E3C0B2 /* SmarfieFinal.xcdatamodeld */; };
+		B9F1E307204314EB00A9E4DA /* BestSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F1E306204314EB00A9E4DA /* BestSaved.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +55,13 @@
 		8348C3C4203DBD7C0009FD5B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8348C3C6203DBD980009FD5B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8348C3C8203DBDA50009FD5B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B96302DD20443C2F0053E486 /* FavouritesPhotos+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouritesPhotos+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B96302DE20443C2F0053E486 /* FavouritesPhotos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouritesPhotos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B9B30A8A2041A30100E3C0B2 /* BestPhotos+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BestPhotos+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B9B30A8B2041A30200E3C0B2 /* PersistenceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		B9B30A8C2041A30200E3C0B2 /* BestPhotos+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BestPhotos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B9B30A8E2041A30200E3C0B2 /* PhotoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoModel.xcdatamodel; sourceTree = "<group>"; };
+		B9F1E306204314EB00A9E4DA /* BestSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSaved.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 				8348C3BD203DBD6B0009FD5B /* sharedPhoto.swift */,
 				191F40E3203DC66A00380050 /* MotionManager.swift */,
 				8348C3C4203DBD7C0009FD5B /* User.swift */,
+				B9F1E306204314EB00A9E4DA /* BestSaved.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -86,6 +93,8 @@
 				B9B30A8D2041A30200E3C0B2 /* SmarfieFinal.xcdatamodeld */,
 				B9B30A8A2041A30100E3C0B2 /* BestPhotos+CoreDataClass.swift */,
 				B9B30A8C2041A30200E3C0B2 /* BestPhotos+CoreDataProperties.swift */,
+				B96302DD20443C2F0053E486 /* FavouritesPhotos+CoreDataClass.swift */,
+				B96302DE20443C2F0053E486 /* FavouritesPhotos+CoreDataProperties.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -248,6 +257,7 @@
 				8348C3C3203DBD720009FD5B /* FirstTableViewCell.swift in Sources */,
 				8348C3B5203DBD420009FD5B /* MySelfiesViewController.swift in Sources */,
 				8348C3C2203DBD720009FD5B /* TableViewCell.swift in Sources */,
+				B96302DF20443C2F0053E486 /* FavouritesPhotos+CoreDataClass.swift in Sources */,
 				8348C3BC203DBD610009FD5B /* CenteredItemCollectionViewFlowLayout.swift in Sources */,
 				8348C3C7203DBD990009FD5B /* ViewController.swift in Sources */,
 				8348C3BE203DBD6B0009FD5B /* sharedPhoto.swift in Sources */,
@@ -256,7 +266,9 @@
 				B9B30A902041A30200E3C0B2 /* PersistenceService.swift in Sources */,
 				19337FB72041DDE40073E971 /* VoidView.swift in Sources */,
 				191F40E4203DC66A00380050 /* MotionManager.swift in Sources */,
+				B9F1E307204314EB00A9E4DA /* BestSaved.swift in Sources */,
 				8348C3B3203DBD3A0009FD5B /* MySelfiesDetailsViewController.swift in Sources */,
+				B96302E020443C2F0053E486 /* FavouritesPhotos+CoreDataProperties.swift in Sources */,
 				8348C3BB203DBD610009FD5B /* PreviewViewController.swift in Sources */,
 				B9B30A912041A30200E3C0B2 /* BestPhotos+CoreDataProperties.swift in Sources */,
 				191F40E2203DC61800380050 /* PhotoClassifier.swift in Sources */,

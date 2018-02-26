@@ -17,8 +17,6 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var placeholder: UIImageView!
     
     
-    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
-    var best = [BestPhotos]()
     
     
     //      MARK:- COLLECTIONVIEW LAYOUT
@@ -61,11 +59,12 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     
 //    MARK:- COLLECTION VIEW SETUP
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let best = PhotoShared.shared.setOfBest{
-           return best.count
-        }else{
-           return 1
-        }
+//        if let best = PhotoShared.shared.setOfBest{
+//           return best.count
+//        }else{
+//           return 1
+//        }
+        return BestSelfie.shared.countBest
     }
     
     
@@ -74,22 +73,17 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // fetch delle immagini da coredata
-        do{
-        let bestSelfie = try PersistenceService.context.fetch(fetchRequest)
-        self.best = bestSelfie
-        }catch {}
         
-        // ovviamente restituisce solo se sta qualcosa in setOfBest e quindi va cambiato
-        // conviene fare un didload o didAppear ?, aggiornare da coredata l'array e fare il controllo
+    
         
-        if let _ = PhotoShared.shared.setOfBest{
-        //if best.count > 0 {
+        //if let _ = PhotoShared.shared.setOfBest{
+        if BestSelfie.shared.best.count > 0 {
              print("in if")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath)
             let cellImage = cell.viewWithTag(1) as! UIImageView
-            cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]
-            //cellImage.image =  UIImage(data: best[indexPath.row].image! as Data)
+          //  cellImage.image =  PhotoShared.shared.bestPhotos[indexPath.row]
+            
+            cellImage.image =  UIImage(data: BestSelfie.shared.best[indexPath.row].image! as Data)
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.1
             cell.layer.borderColor = UIColor.gray.cgColor
@@ -111,9 +105,9 @@ class FirstTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let _ = PhotoShared.shared.setOfBest{
+        if BestSelfie.shared.countBest > 0 {
             let controller = UIStoryboard(name: "Main",bundle: Bundle.main).instantiateViewController(withIdentifier: "MySelfiesDetailsViewController") as! MySelfiesDetailsViewController
-            controller.photo = PhotoShared.shared.bestPhotos[indexPath.row]
+            controller.photo = UIImage(data: BestSelfie.shared.best[indexPath.row].image! as Data)
             controller.index = indexPath.row
             controller.photoType = .best
             let VC = UINavigationController(rootViewController: controller)

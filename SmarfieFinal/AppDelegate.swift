@@ -13,11 +13,18 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-
+        BestSelfie.shared.updateBest()
+        
+//        if let result = try? PersistenceService.context.fetch(fetchRequest){
+//            for object in result {
+//                PersistenceService.context.delete(object)
+//            }
+//        }
+        
         return true
     }
 
