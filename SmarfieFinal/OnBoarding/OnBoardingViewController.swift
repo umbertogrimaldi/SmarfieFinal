@@ -65,7 +65,7 @@ class onBoardingViewController: UIPageViewController, UIPageViewControllerDataSo
     
     
     private func newViewController(_ index:Int)->UIViewController{
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController\(index)")
+        return UIStoryboard(name: "OnBoarding", bundle: nil).instantiateViewController(withIdentifier: "ViewController\(index)")
     }
     
 }

@@ -92,7 +92,7 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
 //        best.image = imgData
 //        PersistenceService.saveContext()
 
-
+        BestSelfie.shared.saveBeast(photo: PhotoShared.shared.myPhotoSession!.first!.image)
              self.myPhotoCollectionView.reloadData()
     }
     

@@ -97,6 +97,7 @@ class BestSideViewController:UIViewController{
         cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
         self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
+        print ("Layer set")
         
     }
     

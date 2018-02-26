@@ -14,12 +14,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let isFirstLaunch = UserDefaults.isFirstLaunch()
-
+    let queue = DispatchQueue(label: "com.smarfie.coredataqueue", qos: .userInitiated)
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        var vc:UIViewController!
         
         if isFirstLaunch{
-            let vc = UIStoryboard()
+            vc = UIStoryboard(name: "OnBoarding", bundle:nil).instantiateInitialViewController()
+           
+        } else {
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         }
+        
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+        
+        
+            BestSelfie.shared.updateBest()
+            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue:"ReloadCollectionViews")))
         
 
         return true
