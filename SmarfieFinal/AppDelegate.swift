@@ -11,19 +11,33 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    let isFirstLaunch = UserDefaults.standard.isFirstLaunch
     var window: UIWindow?
+    var viewController:UIViewController!
     let fetchRequest: NSFetchRequest<BestPhotos> = BestPhotos.fetchRequest()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        window = UIWindow(frame: UIScreen.main.bounds)
         BestSelfie.shared.updateBest()
+        
+        BestSelfie.shared.updateFav()
+        
+        if !isFirstLaunch{
+            viewController = UIStoryboard(name: "OnBoarding", bundle: nil).instantiateInitialViewController()
+        }else{
+            viewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        }
+        window?.rootViewController = viewController
+        
         
 //        if let result = try? PersistenceService.context.fetch(fetchRequest){
 //            for object in result {
 //                PersistenceService.context.delete(object)
 //            }
 //        }
+        
+        
+        
         
         return true
     }
@@ -51,5 +65,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PersistenceService.saveContext()
     }
 
+}
+
+extension UserDefaults{
+    var isFirstLaunch:Bool{
+        get{
+            let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
+            let  firstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
+            if firstLaunch{
+                UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
+                UserDefaults.standard.synchronize()
+            }
+            return firstLaunch
+        }
+    }
 }
 

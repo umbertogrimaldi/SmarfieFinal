@@ -14,7 +14,7 @@ import CoreMotion
 
 
 class PhotoClassifier {
-
+    
     var faceSide:FaceSide?
     var isInBestSide:Bool{
         get{
@@ -32,9 +32,9 @@ class PhotoClassifier {
     var totalScore = 0.0
     var faceScore = 0.0
     var score:Double = 0.0
-   
+    
     var goodPhotoInfo = "Wow! "
-    var perfect:Bool = true
+    
     
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
@@ -56,12 +56,12 @@ class PhotoClassifier {
         let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
         let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
         let options = [CIDetectorSmile:true,CIDetectorEyeBlink:true,CIDetectorFocalLength:true]
-let faces = faceDetector?.features(in:newImage, options: options)
+        let faces = faceDetector?.features(in:newImage, options: options)
         return faces as! [CIFaceFeature]
     }
     
     
-
+    
     
     
     func calculateScore(image:PhotoScore)->(Double,String){
@@ -70,104 +70,106 @@ let faces = faceDetector?.features(in:newImage, options: options)
         faceScore = 0.0
         score = 0.0
         var photoInfo = "Hint: "
+        goodPhotoInfo = "Wow! "
+        var perfect:Bool = true
         
         let brightness = image.image.brightness
         
         let faces = self.detectFaces(image: image.image)
         
         guard faces.count > 0 else {return (0,"No face found")}
-        guard image.gravity > -0.45 else {return (0,photoInfo+"try to raise the camera up")}
+        guard image.gravity > -0.45 else {return (0.1,photoInfo+"try to raise the camera up")}
         
         
+        
+        for face in faces{
+            self.smile = face.hasSmile
+            self.shutEyes = !face.leftEyeClosed && !face.rightEyeClosed
             
-            for face in faces{
-                self.smile = face.hasSmile
-                self.shutEyes = !face.leftEyeClosed && !face.rightEyeClosed
+            if face.faceAngle > -15 && face.faceAngle < 15 {
+                self.faceAngleScore = abs(Double(face.faceAngle) / 15)
+                //                    self.faceAngleScore = 1 - self.faceAngleScore
+                faceScore += self.faceAngleScore
                 
-                if face.faceAngle > -15 && face.faceAngle < 15 {
-                    self.faceAngleScore = abs(Double(face.faceAngle) / 15)
-                    
-                    faceScore += self.faceAngleScore
-                    
-                }else{
-                    photoInfo += "straighten up your head!"
-                    perfect = false
-                }
-                
-                if smile{
-                    faceScore += 1.0
-                    goodPhotoInfo += "What a great smile!"
-                }else {
-                    photoInfo += "Come on dude, smile! life is beautiful and you're too\n"
-                    perfect = false
-                }
-                
-                if shutEyes{
-                    faceScore += 1.0
-                    goodPhotoInfo += "Your eyes are beautiful\n"
-                }else {
-                     photoInfo += "Open your eyes, they're so shiny!\n"
-                     perfect = false
-                }
-            }
-            
-          
-            
-            if faces.count == 1{
-                let x = (faces.first!.leftEyePosition.x + faces.first!.rightEyePosition.x) / 2
-                let y = faces.first!.bounds.midX
-                if x > y - 12 {
-                    faceSide = .right
-                } else if x < y + 12 {
-                    faceSide = .left
-                } else {
-                    faceSide = .front
-                }
-                print (y-12," ",x," ",y+12)
-                print (faceSide!)
-                
-                if isInBestSide {
-                    faceScore += 1.0
-                    goodPhotoInfo += "you're on your best side\n"
-                }else {
-                    photoInfo += "try to take a selfie of your best side \n"
-                    perfect = false
-                }
-            }
-            
-              faceScore = faceScore/Double(faces.count)
-            
-            if brightness > 34 && brightness < 227 {
-                bscore = (brightness - 131) / 96
-               
-            }else if brightness < 34{
-                photoInfo += "you're in a dark place, try to increase brightness\n"
-                perfect = false
-            }else if brightness > 227{
-                photoInfo += "your too bright man, stop shining or get in a darker place \n "
-                perfect = false
-            }
-            
-          
-            
-         
-            
-            if image.gravity > -0.20 && image.gravity <= 0.20  {
-                score += 0.35
-                photoInfo += "go a little bit higher! \n"
-                perfect = false
-            } else if image.gravity > 0.20 {
-                score += 1.0
-                goodPhotoInfo += "and this selfie is from a perfect angle!"
-            }
-            
-            totalScore = (score + bscore + faceScore)
-            
-            if faces.count == 1 {
-                totalScore = totalScore/6
             }else{
-                totalScore = totalScore/5
+                photoInfo += "straighten up your head! \n"
+                perfect = false
             }
+            
+            if smile{
+                faceScore += 1.0
+                goodPhotoInfo += "What a great smile!"
+            }else {
+                photoInfo += "Smile more!\n"
+                perfect = false
+            }
+            
+            if shutEyes{
+                faceScore += 1.0
+                goodPhotoInfo += "Your eyes are beautiful\n"
+            }else {
+                photoInfo += "Open your eyes! \n"
+                perfect = false
+            }
+        }
+        
+        
+        
+        if faces.count == 1{
+            let x = (faces.first!.leftEyePosition.x + faces.first!.rightEyePosition.x) / 2
+            let y = faces.first!.bounds.midX
+            if x > y - 12 {
+                faceSide = .right
+            } else if x < y + 12 {
+                faceSide = .left
+            } else {
+                faceSide = .front
+            }
+            print (y-12," ",x," ",y+12)
+            print (faceSide!)
+            
+            if isInBestSide {
+                faceScore += 1.0
+                goodPhotoInfo += "you're on your best side\n"
+            }else {
+                photoInfo += "try to turn on your best side \n"
+                perfect = false
+            }
+        }
+        
+        faceScore = faceScore/Double(faces.count)
+        
+        if brightness > 34 && brightness < 227 {
+            bscore = (brightness - 131) / 96
+            //                bscore = 1 - bscore
+        }else if brightness < 30{
+            photoInfo += "Increase brightness\n"
+            perfect = false
+        }else if brightness > 230{
+            photoInfo += " Decrease brightness \n "
+            perfect = false
+        }
+        
+        
+        
+        
+        
+        if image.gravity > -0.20 && image.gravity <= 0.20  {
+            score += 0.35
+            photoInfo += "go a little bit higher! \n"
+            perfect = false
+        } else if image.gravity > 0.20 {
+            score += 1.0
+            goodPhotoInfo += "and this selfie is from a perfect angle!"
+        }
+        
+        totalScore = (score + bscore + faceScore)
+        
+        if faces.count == 1 {
+            totalScore = totalScore/6
+        }else{
+            totalScore = totalScore/5
+        }
         
         if perfect{
             photoInfo = goodPhotoInfo
@@ -177,6 +179,7 @@ let faces = faceDetector?.features(in:newImage, options: options)
             photoInfo = "You're too much guys, I can't give you any hint but i'm pretty shure you're really really beautiful"
         }
         
+        print (photoInfo)
         return (totalScore,photoInfo)
     }
     

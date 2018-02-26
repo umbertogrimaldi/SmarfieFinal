@@ -50,11 +50,12 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     //    MARK:- BOTTOM COLLECTION VIEW SETUP
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         if let _ = PhotoShared.shared.setOfFavourites{
-            return PhotoShared.shared.favourites.count
-         }else{
-            return 1
-        }
+//         if let _ = PhotoShared.shared.setOfFavourites{
+//            return PhotoShared.shared.favourites.count
+//         }else{
+//            return 1
+//        }
+        return BestSelfie.shared.countFav
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,7 +64,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
             cell.layer.borderColor = UIColor.gray.cgColor
             cell.layer.cornerRadius = 5
             let cellImage = cell.viewWithTag(2) as! UIImageView
-        if let _ = PhotoShared.shared.setOfFavourites{ cellImage.image = PhotoShared.shared.favourites[indexPath.row]}
+        if BestSelfie.shared.countFav > 1 { cellImage.image = UIImage(data: BestSelfie.shared.favourites[indexPath.row].image! as Data)}
             return cell
 
     }

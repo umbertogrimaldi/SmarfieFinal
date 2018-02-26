@@ -45,12 +45,18 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.bringSubview(toFront: emptyView)
-        emptyView.bringSubview(toFront: view)
-        if let _ = PhotoShared.shared.setOfBest {
-              emptyView.removeFromSuperview()
-        }else if let _ = PhotoShared.shared.setOfFavourites{
+        
+        if BestSelfie.shared.best.count > 1{
             emptyView.removeFromSuperview()
+        }else if  let _ = PhotoShared.shared.setOfFavourites{
+             emptyView.removeFromSuperview()
         }
+        
+//        if let _ = PhotoShared.shared.setOfBest {
+//              emptyView.removeFromSuperview()
+//        }else if let _ = PhotoShared.shared.setOfFavourites{
+//            emptyView.removeFromSuperview()
+//        }
       
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
@@ -60,14 +66,14 @@ class MySelfiesViewController: UIViewController, UITableViewDataSource, UITableV
     
     //    MARK: UITableViewDatasource
     func numberOfSections(in tableView: UITableView) -> Int {
-        var sections = 0
-        if let _ = PhotoShared.shared.setOfBest{
+          var sections = 0
+        if  BestSelfie.shared.best.count>1{
             sections += 1
         }
-        if let _ = PhotoShared.shared.setOfFavourites{
+        if  BestSelfie.shared.countFav>1{
             sections += 1
         }
-        return sections
+        return  sections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

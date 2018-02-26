@@ -115,13 +115,32 @@ class PreviewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let center = view.convert(self.myPhotoCollectionView.center, to: self.myPhotoCollectionView)
         if let index = myPhotoCollectionView!.indexPathForItem(at:center) {
             photoToSave = PhotoShared.shared.myPhotoSession![index.row]
+//            
+//            let fav = FavouritesPhotos(context: PersistenceService.context)
+//            let imgPng =  UIImagePNGRepresentation((PhotoShared.shared.myPhotoSession?.first?.image.fixOrientation())!)! as NSData
+//            let imgData = UIImagePNGRepresentation(imgPng)! as NSData
+//            
+//            best.image = imgData
+//            PersistenceService.saveContext()
         }
+        let fav = FavouritesPhotos(context: PersistenceService.context)
         
         if let _ = PhotoShared.shared.setOfFavourites{
                PhotoShared.shared.setOfFavourites!.insert(photoToSave!.image)
+            
+           
+           
         }else{
                PhotoShared.shared.setOfFavourites = [photoToSave!.image]
         }
+        
+        let imgPng = photoToSave?.image.fixOrientation()
+        let imgData = UIImagePNGRepresentation(imgPng!)! as NSData
+        fav.image = imgData
+        PersistenceService.saveContext()
+        BestSelfie.shared.updateFav()
+        
+        
          let alert = UIAlertController(title: "OK!", message: "Your photo has been saved as a favourite", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Cool!", style: .default) { _ in
             alert.dismiss(animated: true, completion: nil)
